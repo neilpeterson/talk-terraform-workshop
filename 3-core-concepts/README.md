@@ -57,3 +57,9 @@ Use `terraform apply plan.out` to apply the plan.
 ```
 terrraform apply plan.out
 ```
+
+## Next Module
+
+In the next module, you will learn about some additional Terraform concepts.
+
+Module 4: [Terraform Additional Concepts](../4-more-advacned-concepts)
