@@ -45,4 +45,4 @@ terraform destroy
 
 In the next module, you will learn about many core Terraform concepts.
 
-Module 3: [Terraform Core Concepts](../3-core-concepts)
+Module 3: [Terraform Core Concepts](../3-string-interpolation)
