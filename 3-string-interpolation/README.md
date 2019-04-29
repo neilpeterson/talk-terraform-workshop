@@ -1,11 +1,11 @@
-# Terraform Core Concepts
+# String Interpolation
 
 ## Module Overview
 
 - String Interpolation
 - Terraform Plan
 
-## Create an Azure Cosmos Database
+## Create an Azure Container Instance
 
 Open the previously created configuration found in the main.tf file. The contents should match the following. If needed, recreate the file.
 
@@ -64,6 +64,6 @@ terraform apply plan.out
 
 ## Next Module
 
-In the next module, you will learn about some additional Terraform concepts.
+In the next module, you will learn about adding variables to a Terraform configuration.
 
-Module 4: [Terraform Additional Concepts](../4-input-variables)
+Module 4: [Input and output variables](../4-terraform-variables)
