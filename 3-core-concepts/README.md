@@ -5,6 +5,10 @@
 - String Interpolation
 - Terraform Plan
 
+## Create an Azure Cosmos Database
+
+Create a file named main.tf and copy in the following configuration.
+
 ```
 resource "azurerm_resource_group" "vote-resource-group" {
   name     = "vote-resource-group"
@@ -34,4 +38,22 @@ resource "azurerm_cosmosdb_account" "vote-cosmos-db" {
     failover_priority = 0
   }
 }
+```
+
+Use ` terraform init` to initalize the directory.
+
+```
+terraform init
+```
+
+Use `terraform plan --out plan.out` to visualize what will be created and produce a plan file.
+
+```
+terraform plan --out plan.out
+```
+
+Use `terraform apply plan.out` to apply the plan.
+
+```
+terrraform apply plan.out
 ```
