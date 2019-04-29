@@ -99,4 +99,4 @@ Add output variable to surface ip address.
 
 In the next module, you will learn about Terraform state.
 
-Module 4: [Input and output variables](../5-terraform-state)
+Module 4: [Terraform State](../5-terraform-state)
