@@ -10,32 +10,32 @@
 Open the previously created configuration found in the main.tf file. The contents should match the following. If needed, recreate the file.
 
 ```
-resource "azurerm_resource_group" "vote-resource-group" {
-  name     = "vote-resource-group"
+resource "azurerm_resource_group" "vote-app" {
+  name     = "vote-app"
   location = "westus"
 }
 ```
 
 We now want to add an Azure Container Instance to the configuration. The trick is though that we want the resource created inside of the resource group that is also defined in the configuration. To do so we need the resource group, which can be derived using a process referred to as string interpolation.
 
-Update the configuration so that it looks like this. Notice that a second configuration block is defined for the Azure Container Instances (azurerm_resource_group). Also notice the syntax that makes up the container instance location, resource_group_name, and dns_name_label. The values are derived from the azure_resoure_group using the notation `${azurerm_resource_group.vote-resource-group.name}`.
+Update the configuration so that it looks like this. Notice that a second configuration block is defined for the Azure Container Instances (azurerm_resource_group). Also notice the syntax that makes up the container instance location, resource_group_name, and dns_name_label. The values are derived from the azure_resoure_group using the notation `${azurerm_resource_group.vote-app.name}`.
 
 ```
-resource "azurerm_resource_group" "vote-resource-group" {
-  name     = "vote-resource-group"
+resource "azurerm_resource_group" "vote-app" {
+  name     = "vote-app"
   location = "westus"
 }
 
-resource "azurerm_container_group" "vote-aci" {
-  name                = "vote-aci"
-  location            = "${azurerm_resource_group.vote-resource-group.location}"
-  resource_group_name = "${azurerm_resource_group.vote-resource-group.name}"
+resource "azurerm_container_group" "vote-app" {
+  name                = "vote-app"
+  location            = "${azurerm_resource_group.vote-app.location}"
+  resource_group_name = "${azurerm_resource_group.vote-app.name}"
   ip_address_type     = "public"
-  dns_name_label      = "${azurerm_resource_group.vote-resource-group.name}"
+  dns_name_label      = "${azurerm_resource_group.vote-app.name}"
   os_type             = "linux"
 
   container {
-    name   = "vote-aci"
+    name   = "vote-app"
     image  = "microsoft/aci-helloworld"
     cpu    = "0.5"
     memory = "1.5"
@@ -60,6 +60,12 @@ Use `terraform apply plan.out` to apply the plan.
 
 ```
 terraform apply plan.out
+```
+
+You can validate that the container has been created using the Azure CLI `az contaier list` command.
+
+```
+az container list -o table
 ```
 
 ## Next Module

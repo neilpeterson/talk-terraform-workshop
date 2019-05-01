@@ -34,6 +34,9 @@ echo "access_key: $ACCOUNT_KEY"
 export ARM_ACCESS_KEY=<access_key>
 ```
 
+Create a file names `backend.tf` and copy in the following configuration. Update the storage account name to match what was created in the last step.
+
+
 ```
 terraform {
   backend "azurerm" {

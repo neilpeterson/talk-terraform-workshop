@@ -32,7 +32,7 @@ variable "container-image" {
 ## Add a Microsoft Azure Consmos Database
 
 ```
-resource "azurerm_resource_group" "vote-resource-group" {
+resource "azurerm_resource_group" "vote-app" {
   name     = "${var.resource_group}"
   location = "${var.location}"
 }
@@ -42,10 +42,10 @@ resource "random_integer" "ri" {
   max = 99999
 }
 
-resource "azurerm_cosmosdb_account" "vote-cosmos-db" {
+resource "azurerm_cosmosdb_account" "vote-app" {
   name                = "tfex-cosmos-db-${random_integer.ri.result}"
-  location            = "${azurerm_resource_group.vote-resource-group.location}"
-  resource_group_name = "${azurerm_resource_group.vote-resource-group.name}"
+  location            = "${azurerm_resource_group.vote-app.location}"
+  resource_group_name = "${azurerm_resource_group.vote-app.name}"
   offer_type          = "Standard"
   kind                = "GlobalDocumentDB"
 
@@ -63,24 +63,24 @@ resource "azurerm_cosmosdb_account" "vote-cosmos-db" {
   }
 }
 
-resource "azurerm_container_group" "vote-aci" {
-  name                = "vote-aci"
-  location            = "${azurerm_resource_group.vote-resource-group.location}"
-  resource_group_name = "${azurerm_resource_group.vote-resource-group.name}"
+resource "azurerm_container_group" "vote-app" {
+  name                = "vote-app"
+  location            = "${azurerm_resource_group.vote-app.location}"
+  resource_group_name = "${azurerm_resource_group.vote-app.name}"
   ip_address_type     = "public"
   dns_name_label      = "${var.dns-prefix}"
   os_type             = "linux"
 
   container {
-    name   = "vote-aci"
+    name   = "vote-app"
     image  = "${var.container-image}"
     cpu    = "0.5"
     memory = "1.5"
     port   = "80"
 
     environment_variables {
-      "COSMOS_DB_ENDPOINT"  = "${azurerm_cosmosdb_account.vote-cosmos-db.endpoint}"
-      "COSMOS_DB_MASTERKEY" = "${azurerm_cosmosdb_account.vote-cosmos-db.primary_master_key}"
+      "COSMOS_DB_ENDPOINT"  = "${azurerm_cosmosdb_account.vote-app.endpoint}"
+      "COSMOS_DB_MASTERKEY" = "${azurerm_cosmosdb_account.vote-app.primary_master_key}"
       "TITLE"               = "Azure Voting App"
       "VOTE1VALUE"          = "Cats"
       "VOTE2VALUE"          = "Dogs"
