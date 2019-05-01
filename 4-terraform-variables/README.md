@@ -92,7 +92,19 @@ resource "azurerm_container_group" "vote-app" {
 Add output variable to surface ip address.
 
 ```
+output "ip_address" {
+  value = "${azurerm_container_group.vote-app.ip_address}"
+}
+```
 
+```
+terraform plan --out plan.out
+```
+
+Use `terraform apply plan.out` to apply the plan.
+
+```
+terraform apply plan.out
 ```
 
 ## Next Module

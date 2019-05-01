@@ -47,8 +47,17 @@ terraform {
 }
 ```
 
+```
+terraform init
+```
+
+```
+rm terraform.tfstate
+rm rm terraform.tfstate.backup
+```
+
 ## Next Module
 
 In the next module, you will learn to modularize and re-use terraform configurations.
 
-Module 4: [Terraform Modules](../5-terraform-modules)
+Module 4: [Terraform Modules](../6-terraform-modules)
