@@ -68,6 +68,10 @@ You can validate that the container has been created using the Azure CLI `az con
 az container list -o table
 ```
 
+The containers public IP address can be used to see the running application.
+
+![](../images/aci-hello-world.jpg)
+
 ## Next Module
 
 In the next module, you will learn about adding variables to a Terraform configuration.
