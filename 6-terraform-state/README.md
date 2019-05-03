@@ -58,6 +58,6 @@ rm rm terraform.tfstate.backup
 
 ## Next Module
 
-In the next module, you will learn to modularize and re-use terraform configurations.
+In the next module, you will learn about Terraform Workspaces.
 
-Module 6: [Terraform Modules](../6-terraform-modules)
+Module 6: [Terraform Workspaces](../7-terraform-workspaces)

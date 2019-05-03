@@ -109,6 +109,6 @@ terraform apply plan.out
 
 ## Next Module
 
-In the next module, you will learn about Terraform state.
+In the next module, you will learn about Terraform functions.
 
-Module 4: [Terraform State](../5-terraform-state)
+Module 5: [Terraform Functions](../5-terraform-functions)

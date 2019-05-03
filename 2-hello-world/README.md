@@ -20,6 +20,8 @@ cd vote-app
 
 Create a file named `main.tf` and copy in the following configuration. This configuration includes a single resource block that creates an Azure Resource Group.
 
+AUTHORING NOTE: Expand on HCL format here.
+
 ```
 resource "azurerm_resource_group" "vote-app" {
   name     = "vote-app"

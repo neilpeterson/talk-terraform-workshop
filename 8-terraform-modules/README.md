@@ -38,3 +38,9 @@ terraform plan --out plan.out
 ```
 terraform apply plan.out
 ```
+
+## Next Module
+
+In the next module, you will learn about Terraform datasources and templates.
+
+Module 9: [Terraform Datasources and Templates](../9-datasources-templates)
