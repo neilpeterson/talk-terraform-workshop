@@ -60,4 +60,4 @@ rm rm terraform.tfstate.backup
 
 In the next module, you will learn about Terraform Workspaces.
 
-Module 6: [Terraform Workspaces](../7-terraform-workspaces)
+Module 7: [Terraform Workspaces](../7-terraform-workspaces)
