@@ -76,4 +76,4 @@ The containers public IP address can be used to see the running application.
 
 In the next module, you will learn about adding variables to a Terraform configuration.
 
-Module 4: [Input and output variables](../4-terraform-variables)
+Module 4: [Terraform Variables](../4-terraform-variables)
