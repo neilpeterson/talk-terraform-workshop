@@ -6,11 +6,15 @@
 - Configure backend state store
 - Delete and recreate state
 
+## Create Azure Storage Account
+
+Create a file named `storage.sh` and copy in the following script.
+
 ```
 #!/bin/bash
 
 RESOURCE_GROUP_NAME=tstate
-STORAGE_ACCOUNT_NAME=tstate$RANDOM
+STORAGE_ACCOUNT_NAME=tstate$$
 CONTAINER_NAME=tstate
 
 # Create a resource group
@@ -30,12 +34,21 @@ echo "container_name: $CONTAINER_NAME"
 echo "access_key: $ACCOUNT_KEY"
 ```
 
+Run the script and take note of the storage account name and access key which can be seen as output once the script has completed.
+
+```
+sh storage.sh
+```
+
+Store the access key in an environment variable named `ARM_ACCESS_KEY`.
+
 ```
 export ARM_ACCESS_KEY=<access_key>
 ```
 
-Create a file names `backend.tf` and copy in the following configuration. Update the storage account name to match what was created in the last step.
+## Create Terraform Backend
 
+Create a file names `backend.tf` and copy in the following configuration. Update the storage account name to match what was created in the last step.
 
 ```
 terraform {
@@ -50,6 +63,13 @@ terraform {
 ```
 terraform init
 ```
+
+At this point, a Terraform state file has been created in the Azure Blob.
+
+![](../images/remote-state.jpg)
+
+
+Remove the local state files.
 
 ```
 rm terraform.tfstate

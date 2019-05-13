@@ -12,7 +12,7 @@ Open the previously created configuration found in the main.tf file. The content
 ```
 resource "azurerm_resource_group" "vote-app" {
   name     = "vote-app"
-  location = "westus"
+  location = "eastus"
 }
 ```
 

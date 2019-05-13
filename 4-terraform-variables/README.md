@@ -24,7 +24,7 @@ variable "location" {
 
 variable "dns-prefix" {
   description = "DNS prefix for the public IP address of the container instance."
-  default     = "vote-demo"
+  default     = "vote-app"
 }
 
 variable "container-image" {
@@ -38,7 +38,7 @@ variable "container-name" {
 }
 ```
 
-## Add a Microsoft Azure Consmos Database
+## Update configuration to use variables
 
 ```
 resource "azurerm_resource_group" "vote-app" {
@@ -74,10 +74,6 @@ touch output.tf
 output "ip_address" {
   value = "${azurerm_container_group.vote-app.ip_address}"
 }
-```
-
-```
-terraform init
 ```
 
 ```
