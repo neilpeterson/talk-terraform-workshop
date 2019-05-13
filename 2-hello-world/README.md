@@ -25,7 +25,7 @@ AUTHORING NOTE: Expand on HCL format here.
 ```
 resource "azurerm_resource_group" "vote-app" {
   name     = "vote-app"
-  location = "westus"
+  location = "eastus"
 }
 ```
 

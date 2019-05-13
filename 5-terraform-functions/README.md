@@ -16,39 +16,47 @@ substr("ThisIsALongStfunctions-demongThatWouldFailAsAnAzureStorageAccountName", 
 lower(substr("ThisIsALongStfunctions-demongThatWouldFailAsAnAzureStorageAccountName", 0, 6))
 ```
 
+Open the `main.tf` file created in the last module and update the name of the Azure Container Instance to use the `lower` function. If needed, you can create a new file and copy in the following configuration.
 
 ```
-vafunctions-demoable "resource_group" {
-  descfunctions-demoption = "The name of the resource group in which to create the container instance and Cosmos DB instance."
-  default     = "vote-demo"
-}
-
-vafunctions-demoable "location" {
-  descfunctions-demoption = "The location for the resource group in which to create the container instance and Cosmos DB instance."
-  default     = "eastus"
-}
-
-vafunctions-demoable "storage-account-name" {
-  descfunctions-demoption = "Azure Storage account name."
-  default     = "SampleStorageAccount"
-}
-```
-
-
-```
-resource "azurerm_resource_group" "functions-demo" {
+resource "azurerm_resource_group" "vote-app" {
   name     = "${var.resource_group}"
   location = "${var.location}"
 }
 
-resource "azurerm_storage_account" "functions-demo" {
-  name                     = "${lower(substr("${var.storage-account-name}", 0, 10))}"
-  resource_group_name      = "${azurerm_resource_group.functions-demo.name}"
-  location                 = "westus"
-  account_tier             = "Standard"
-  account_replication_type = "GRS"
+resource "azurerm_container_group" "vote-app" {
+  name                = "${lower(var.container-name)}"
+  location            = "${azurerm_resource_group.vote-app.location}"
+  resource_group_name = "${azurerm_resource_group.vote-app.name}"
+  ip_address_type     = "public"
+  dns_name_label      = "${var.dns-prefix}"
+  os_type             = "linux"
+
+  container {
+    name   = "vote-app"
+    image  = "${var.container-image}"
+    cpu    = "0.5"
+    memory = "1.5"
+    port   = "80"
+  }
 }
 ```
+
+Because we have not updated the providers beeing used, we do not need to re-initalize the directory.
+
+Create the deployment plan. If you have been following along, the container instance name should have changed from `HelloWorld` to `helloworld` which should be noted in the plan.
+
+```
+terraform plan --out plan.out
+```
+
+Use `terraform apply plan.out` to apply the plan.
+
+```
+terraform apply plan.out
+```
+
+The containers public IP address can be used to see the running application.
 
 ## Next Module
 

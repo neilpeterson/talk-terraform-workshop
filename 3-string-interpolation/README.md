@@ -23,7 +23,7 @@ Update the configuration so that it looks like this. Notice that a second config
 ```
 resource "azurerm_resource_group" "vote-app" {
   name     = "vote-app"
-  location = "westus"
+  location = "eastus"
 }
 
 resource "azurerm_container_group" "vote-app" {

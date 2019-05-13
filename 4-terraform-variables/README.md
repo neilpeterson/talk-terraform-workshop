@@ -8,9 +8,13 @@
 ## Create variables file
 
 ```
+touch variables.tf
+```
+
+```
 variable "resource_group" {
   description = "The name of the resource group in which to create the container instance and Cosmos DB instance."
-  default     = "vote-demo"
+  default     = "vote-app"
 }
 
 variable "location" {
@@ -25,7 +29,12 @@ variable "dns-prefix" {
 
 variable "container-image" {
   description = "Container image for the Azure Vote Flask application."
-  default     = "microsoft/azure-vote-front:cosmosdb"
+  default     = "microsoft/aci-helloworld"
+}
+
+variable "container-name" {
+  description = "Container image for the Azure Vote Flask application."
+  default     = "HelloWorld"
 }
 ```
 
@@ -37,34 +46,8 @@ resource "azurerm_resource_group" "vote-app" {
   location = "${var.location}"
 }
 
-resource "random_integer" "ri" {
-  min = 10000
-  max = 99999
-}
-
-resource "azurerm_cosmosdb_account" "vote-app" {
-  name                = "tfex-cosmos-db-${random_integer.ri.result}"
-  location            = "${azurerm_resource_group.vote-app.location}"
-  resource_group_name = "${azurerm_resource_group.vote-app.name}"
-  offer_type          = "Standard"
-  kind                = "GlobalDocumentDB"
-
-  enable_automatic_failover = true
-
-  consistency_policy {
-    consistency_level       = "BoundedStaleness"
-    max_interval_in_seconds = 10
-    max_staleness_prefix    = 200
-  }
-
-  geo_location {
-    location          = "westus"
-    failover_priority = 0
-  }
-}
-
 resource "azurerm_container_group" "vote-app" {
-  name                = "vote-app"
+  name                = "${var.container-name}"
   location            = "${azurerm_resource_group.vote-app.location}"
   resource_group_name = "${azurerm_resource_group.vote-app.name}"
   ip_address_type     = "public"
@@ -77,14 +60,6 @@ resource "azurerm_container_group" "vote-app" {
     cpu    = "0.5"
     memory = "1.5"
     port   = "80"
-
-    environment_variables {
-      "COSMOS_DB_ENDPOINT"  = "${azurerm_cosmosdb_account.vote-app.endpoint}"
-      "COSMOS_DB_MASTERKEY" = "${azurerm_cosmosdb_account.vote-app.primary_master_key}"
-      "TITLE"               = "Azure Voting App"
-      "VOTE1VALUE"          = "Cats"
-      "VOTE2VALUE"          = "Dogs"
-    }
   }
 }
 ```
@@ -92,9 +67,17 @@ resource "azurerm_container_group" "vote-app" {
 Add output variable to surface ip address.
 
 ```
+touch output.tf
+```
+
+```
 output "ip_address" {
   value = "${azurerm_container_group.vote-app.ip_address}"
 }
+```
+
+```
+terraform init
 ```
 
 ```
@@ -106,6 +89,8 @@ Use `terraform apply plan.out` to apply the plan.
 ```
 terraform apply plan.out
 ```
+
+The containers public IP address can be used to see the running application.
 
 ## Next Module
 
