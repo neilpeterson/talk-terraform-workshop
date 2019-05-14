@@ -34,10 +34,18 @@ echo "container_name: $CONTAINER_NAME"
 echo "access_key: $ACCOUNT_KEY"
 ```
 
-Run the script and take note of the storage account name and access key which can be seen as output once the script has completed.
+Run the script. and take note of the storage account name and access key which can be seen as output once the script has completed.
 
 ```
 sh storage.sh
+```
+
+Once the script has completed, it will output the storage account name and access key. Take note of these values.
+
+```
+storage_account_name: tstate653
+container_name: tstate
+access_key: 2A00000bKxAvWbc3Hy000000000000aMdVvSW13000000000000Trj4YE6RBR000000000000zg6ktNsNluKxg==
 ```
 
 Store the access key in an environment variable named `ARM_ACCESS_KEY`.
