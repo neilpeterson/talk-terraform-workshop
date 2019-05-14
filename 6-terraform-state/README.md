@@ -84,6 +84,12 @@ rm terraform.tfstate
 rm rm terraform.tfstate.backup
 ```
 
+We can also remove the script that was used to create the storage account.
+
+```
+rm storage.sh
+```
+
 ## Next Module
 
 In the next module, you will learn about Terraform Workspaces.

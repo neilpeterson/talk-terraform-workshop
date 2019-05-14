@@ -1,5 +1,9 @@
 # Terraform and Cloud Native Application Bundles
 
+## Module Overview
+
+- Integration Terraform with Cloud Native application Bundles (CNAB)
+
 ## Install Duffle
 
 - Go > 1.11.4
