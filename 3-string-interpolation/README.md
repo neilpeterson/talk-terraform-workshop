@@ -66,6 +66,10 @@ You can validate that the container has been created using the Azure CLI `az con
 
 ```
 az container list -o table
+
+Name      ResourceGroup    Status     Image                     IP:ports          Network    CPU/Memory       OsType    Location
+--------  ---------------  ---------  ------------------------  ----------------  ---------  ---------------  --------  ----------
+vote-app  vote-app         Succeeded  microsoft/aci-helloworld  52.191.238.58:80  Public     0.5 core/1.5 gb  Linux     eastus
 ```
 
 The containers public IP address can be used to see the running application.

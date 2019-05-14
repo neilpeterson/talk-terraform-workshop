@@ -48,6 +48,11 @@ To validate resource creation, use the Azure CLI `az group list` command.
 
 ```
 az group list -o table
+
+
+Name             Location    Status
+---------------  ----------  ---------
+vote-app         eastus      Succeeded
 ```
 
 Now that the Terraform configuration has been applied, the configuration can also be destroyed using the `terraform destroy` command.
