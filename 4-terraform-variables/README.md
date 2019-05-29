@@ -109,6 +109,7 @@ Use `terraform apply plan.out` to apply the plan.
 ```
 terraform apply plan.out
 ```
+This deployment will take approximately 18 minutes to complete
 
 ## Next Module
 
