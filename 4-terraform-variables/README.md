@@ -33,8 +33,8 @@ variable "container-image" {
 
 ```
 resource "azurerm_resource_group" "vote-app" {
-  name     = "${var.resource_group}"
-  location = "${var.location}"
+  name     = var.resource_group
+  location = var.location
 }
 
 resource "random_integer" "ri" {
@@ -44,8 +44,8 @@ resource "random_integer" "ri" {
 
 resource "azurerm_cosmosdb_account" "vote-app" {
   name                = "tfex-cosmos-db-${random_integer.ri.result}"
-  location            = "${azurerm_resource_group.vote-app.location}"
-  resource_group_name = "${azurerm_resource_group.vote-app.name}"
+  location            = azurerm_resource_group.vote-app.location
+  resource_group_name = azurerm_resource_group.vote-app.name
   offer_type          = "Standard"
   kind                = "GlobalDocumentDB"
 
@@ -65,22 +65,25 @@ resource "azurerm_cosmosdb_account" "vote-app" {
 
 resource "azurerm_container_group" "vote-app" {
   name                = "vote-app"
-  location            = "${azurerm_resource_group.vote-app.location}"
-  resource_group_name = "${azurerm_resource_group.vote-app.name}"
+  location            = azurerm_resource_group.vote-app.location
+  resource_group_name = azurerm_resource_group.vote-app.name
   ip_address_type     = "public"
-  dns_name_label      = "${var.dns-prefix}"
+  dns_name_label      = var.dns-prefix
   os_type             = "linux"
 
   container {
     name   = "vote-app"
-    image  = "${var.container-image}"
+    image  = var.container-image
     cpu    = "0.5"
     memory = "1.5"
-    port   = "80"
+    ports {
+      port     = 80
+      protocol = "TCP"
+    }
 
     environment_variables {
-      "COSMOS_DB_ENDPOINT"  = "${azurerm_cosmosdb_account.vote-app.endpoint}"
-      "COSMOS_DB_MASTERKEY" = "${azurerm_cosmosdb_account.vote-app.primary_master_key}"
+      "COSMOS_DB_ENDPOINT"  = azurerm_cosmosdb_account.vote-app.endpoint
+      "COSMOS_DB_MASTERKEY" = azurerm_cosmosdb_account.vote-app.primary_master_key
       "TITLE"               = "Azure Voting App"
       "VOTE1VALUE"          = "Cats"
       "VOTE2VALUE"          = "Dogs"
@@ -93,7 +96,7 @@ Add output variable to surface ip address.
 
 ```
 output "ip_address" {
-  value = "${azurerm_container_group.vote-app.ip_address}"
+  value = azurerm_container_group.vote-app.ip_address
 }
 ```
 
