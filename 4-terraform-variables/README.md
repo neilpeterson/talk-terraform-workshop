@@ -7,9 +7,13 @@
 
 ## Create variables file
 
+Create a new file named `variables.tf`. This file will hold variables and default variable values that can be used in your Terraform configurations. A separate file for variables is optional. Variables can also be defined in the same files as your Terraform configurations.
+
 ```
 touch variables.tf
 ```
+
+Add these four variables.
 
 ```
 variable "resource_group" {
@@ -39,6 +43,9 @@ variable "container-name" {
 ```
 
 ## Update configuration to use variables
+
+Update the configuration so that it consums each variable. The syntax (pre 0.12.0) is `${var.variable-name}`. For post 0.12.0 syntax, swith to the [0.12.0 version of this workshop](./replace).
+
 
 ```
 resource "azurerm_resource_group" "vote-app" {
@@ -115,7 +122,7 @@ Use `terraform apply plan.out` to apply the plan.
 terraform apply plan.out
 ```
 
-Once the deployment has compelted, the output variable is displayed.
+Once the deployment has completed, the output variable is displayed.
 
 ```
 Outputs:

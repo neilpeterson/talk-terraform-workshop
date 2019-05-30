@@ -1,0 +1,21 @@
+FROM microsoft/azure-cli
+
+ENV TERRAFORM_VERSION=0.12.0
+
+# Install Terraform
+RUN apk add --update curl \
+  && apk add --update jq \
+  && apk add --update git \
+  && apk add --update unzip && \
+  cd /tmp && \
+  wget https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip && \
+  unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip -d /usr/bin && \
+  wget https://dl.google.com/dl/cloudsdk/channels/rapid/google-cloud-sdk.zip -O /tmp/google-cloud-sdk.zip && \
+  cd /usr/local && unzip /tmp/google-cloud-sdk.zip && \
+  google-cloud-sdk/install.sh --usage-reporting=false --path-update=true --bash-completion=true && \
+  google-cloud-sdk/bin/gcloud config set --installation component_manager/disable_update_check true && \
+  rm -rf /tmp/* && \
+  rm -rf /var/cache/apk/* && \
+  rm -rf /var/tmp/*
+
+CMD ["terraform"]

@@ -2,19 +2,29 @@
 
 ## Module Overview
 
-- Inroducton to Terraform functions
+- Terraform functions
+
+## Use the Terraform console to experiment with Terraform functions
+
+Start the terraform console.
 
 ```
 terraform console
 ```
 
+Enter the following to run the `lower` function on the string `HELLO`).
+
 ```
 lower("HELLO")
 ```
 
+Enter the following to run the `substr` function on the long string.
+
 ```
 substr("ThisIsALongStfunctions-demongThatWouldFailAsAnAzureStorageAccountName", 0, 6)
 ```
+
+The following example combines both the `lower` and `substr` functions.
 
 ```
 lower(substr("ThisIsALongStfunctions-demongThatWouldFailAsAnAzureStorageAccountName", 0, 6))
