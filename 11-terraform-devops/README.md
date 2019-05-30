@@ -4,7 +4,11 @@
 
 If needed, create an Azure DevOps instance. Azure DevOps is free for open source projects, including this workshop.
 
-Navigate to [https://azure.microsoft.com/en-ca/services/devops/]() and sign up for a free account.
+Navigate to [https://azure.microsoft.com/en-ca/services/devops/](https://azure.microsoft.com/en-ca/services/devops/?WT.mc_id=cloudnativeterraform-github-nepeters) and sign up for a free Azure DevOps organization.
+
+![](../images/azd-one.jpg)
+
+Once you have created the organization, a DevOps project is automatically created for you. The DevOps project is where you can create and manage Azure Boards, Azure Repositories, and Azure Pipelines. We will come back to the organization and work with Pipelines later in this module.
 
 ## Create configuration repository
 
