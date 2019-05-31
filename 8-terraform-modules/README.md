@@ -43,4 +43,4 @@ terraform apply plan.out
 
 In the next module, you will learn about Terraform datasources and templates.
 
-Module 9: [Terraform Datasources and Templates](../9-datasources-templates)
+Module 9: [Testing Terraform](../10-testing-terraform)
