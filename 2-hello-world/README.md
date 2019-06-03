@@ -11,18 +11,18 @@
 
 A Terraform configuration is a file or set of files that declare the resource to be created. Terraform configurations are written in Hashicorp Configuration Language (HCL) or JSON. For this workshop, we will work exclusively in HCL. For detailed specs on [HCL](https://www.terraform.io/docs/configuration/index.html).
 
-Create a directory named vote-app.
+Create a directory named hello-world.
 
 ```
-mkdir vote-app
-cd vote-app
+mkdir hello-world
+cd hello-world
 ```
 
 Create a file named `main.tf` and copy in the following configuration. This configuration includes a single resource block that creates an Azure Resource Group.
 
 ```
-resource "azurerm_resource_group" "vote-app" {
-  name     = "vote-app"
+resource "azurerm_resource_group" "hello-world" {
+  name     = "hello-world"
   location = "eastus"
 }
 ```
@@ -50,7 +50,7 @@ az group list -o table
 
 Name             Location    Status
 ---------------  ----------  ---------
-vote-app         eastus      Succeeded
+hello-world         eastus      Succeeded
 ```
 
 Now that the Terraform configuration has been applied, the configuration can also be destroyed using the `terraform destroy` command.

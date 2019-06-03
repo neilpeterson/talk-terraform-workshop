@@ -10,8 +10,8 @@
 Open the previously created configuration found in the main.tf file. The contents should match the following. If needed, recreate the file.
 
 ```
-resource "azurerm_resource_group" "vote-app" {
-  name     = "vote-app"
+resource "azurerm_resource_group" "hello-world" {
+  name     = "hello-world"
   location = "eastus"
 }
 ```
@@ -21,21 +21,21 @@ We now want to add an Azure Container Instance to the configuration. The trick i
 Update the configuration so that it looks like this.
 
 ```
-resource "azurerm_resource_group" "vote-app" {
-  name     = "vote-app"
+resource "azurerm_resource_group" "hello-world" {
+  name     = "hello-world"
   location = "eastus"
 }
 
-resource "azurerm_container_group" "vote-app" {
-  name                = "vote-app"
-  location            = "${azurerm_resource_group.vote-app.location}"
-  resource_group_name = "${azurerm_resource_group.vote-app.name}"
+resource "azurerm_container_group" "hello-world" {
+  name                = "hello-world"
+  location            = "${azurerm_resource_group.hello-world.location}"
+  resource_group_name = "${azurerm_resource_group.hello-world.name}"
   ip_address_type     = "public"
-  dns_name_label      = "${azurerm_resource_group.vote-app.name}"
+  dns_name_label      = "${azurerm_resource_group.hello-world.name}"
   os_type             = "linux"
 
   container {
-    name   = "vote-app"
+    name   = "hello-world"
     image  = "microsoft/aci-helloworld"
     cpu    = "0.5"
     memory = "1.5"
@@ -47,7 +47,7 @@ resource "azurerm_container_group" "vote-app" {
 }
 ```
 
-Notice that a second configuration block is defined for the Azure Container Instances (azurerm_resource_group). Also notice the syntax that makes up the container instance location, resource_group_name, and dns_name_label. The values are derived from the azure_resoure_group using the notation `${azurerm_resource_group.vote-app.name}`.
+Notice that a second configuration block is defined for the Azure Container Instances (azurerm_resource_group). Also notice the syntax that makes up the container instance location, resource_group_name, and dns_name_label. The values are derived from the azure_resoure_group using the notation `${azurerm_resource_group.hello-world.name}`.
 
 ## Apply the configuration
 
@@ -76,7 +76,7 @@ az container list -o table
 
 Name      ResourceGroup    Status     Image                     IP:ports          Network    CPU/Memory       OsType    Location
 --------  ---------------  ---------  ------------------------  ----------------  ---------  ---------------  --------  ----------
-vote-app  vote-app         Succeeded  microsoft/aci-helloworld  52.191.238.58:80  Public     0.5 core/1.5 gb  Linux     eastus
+hello-world  hello-world         Succeeded  microsoft/aci-helloworld  52.191.238.58:80  Public     0.5 core/1.5 gb  Linux     eastus
 ```
 
 The containers public IP address can be used to see the running application.

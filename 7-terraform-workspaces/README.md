@@ -23,21 +23,21 @@ terraform workspace new demo-workspace-001
 Update the `hello-world` app configuration to interpolate the workspace name into the configuration. This can be done with the `${terraform.workspace}` syntax. In this example, the Azure resource group name and container fqdn are appended with the workspace name.
 
 ```
-resource "azurerm_resource_group" "vote-app" {
+resource "azurerm_resource_group" "hello-world" {
   name     = "${var.resource_group}-${terraform.workspace}"
   location = "${var.location}"
 }
 
-resource "azurerm_container_group" "vote-app" {
+resource "azurerm_container_group" "hello-world" {
   name                = "${lower(var.container-name)}"
-  location            = "${azurerm_resource_group.vote-app.location}"
-  resource_group_name = "${azurerm_resource_group.vote-app.name}"
+  location            = "${azurerm_resource_group.hello-world.location}"
+  resource_group_name = "${azurerm_resource_group.hello-world.name}"
   ip_address_type     = "public"
   dns_name_label      = "${var.dns-prefix}-${terraform.workspace}"
   os_type             = "linux"
 
   container {
-    name   = "vote-app"
+    name   = "hello-world"
     image  = "${var.container-image}"
     cpu    = "0.5"
     memory = "1.5"

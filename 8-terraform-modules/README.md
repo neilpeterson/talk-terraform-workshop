@@ -7,22 +7,22 @@
 
 ## Create a Terraform module
 
-Navigate one directory up from where the vote-app configuration is stored. Create a new directory named `vote-app-from-module`.
+Navigate one directory up from where the hello-world configuration is stored. Create a new directory named `hello-world-from-module`.
 
 ```
 cd ../
-mkdir vote-app-from-module
-cd vote-app-from-module
+mkdir hello-world-from-module
+cd hello-world-from-module
 ```
 
 Create a file name `main.tf` and add the following configuration.
 
 ```
-module "vote-app" {
-    source = "../vote-app"
-    resource_group = "vote-app-module"
+module "hello-world" {
+    source = "../hello-world"
+    resource_group = "hello-world-module"
     location = "eastus"
-    dns-prefix = "vote-app-module"
+    dns-prefix = "hello-world-module"
     container-image = "microsoft/azure-vote-front:cosmosdb"
 }
 ```
