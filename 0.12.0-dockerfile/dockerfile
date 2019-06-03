@@ -18,4 +18,7 @@ RUN apk add --update curl \
   rm -rf /var/cache/apk/* && \
   rm -rf /var/tmp/*
 
+# Install Go
+RUN apk add --no-cache git make musl-dev go
+
 CMD ["terraform"]

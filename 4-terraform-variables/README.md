@@ -71,11 +71,15 @@ resource "azurerm_container_group" "hello-world" {
 }
 ```
 
-Add output variable to surface ip address.
+Output variables can be used to output calculated values to the terminal and also for passing data between Terraform modules. We will discuss modules later on in this workshop.
+
+Create a file named `outputs.tf` for the output variables.
 
 ```
-touch output.tf
+touch outputs.tf
 ```
+
+Copy in the following configuration. This configuration will output the public IP address of the container instance.
 
 ```
 output "ip_address" {
@@ -130,7 +134,7 @@ Outputs:
 ip_address = 52.224.145.193
 ```
 
-The containers public IP address can be used to see the running application.
+The containers public IP address can be used to access the running application.
 
 ## Next Module
 

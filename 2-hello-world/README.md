@@ -14,8 +14,8 @@ A Terraform configuration is a file or set of files that declare the resource to
 Create a directory named hello-world.
 
 ```
-mkdir hello-world
-cd hello-world
+mkdir -p clouddrive/hello-world
+cd clouddrive/hello-world
 ```
 
 Create a file named `main.tf` and copy in the following configuration. This configuration includes a single resource block that creates an Azure Resource Group.
@@ -25,6 +25,12 @@ resource "azurerm_resource_group" "hello-world" {
   name     = "hello-world"
   location = "eastus"
 }
+```
+
+Log into Azure with the Azure CLI. If you are working in Azure Cloud Shell, this step can be skipped.
+
+```
+az login
 ```
 
 Before creating the resource with Terraform, the current working directory must be initialized. The initialization process ensures that the proper Terraform provider plugins, Azure, in this case, have been downloaded.

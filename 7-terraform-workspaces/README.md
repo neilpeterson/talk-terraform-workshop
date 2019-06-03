@@ -17,10 +17,10 @@ terraform workspace list
 Create a new workspace with the `terraform workspace new` command.
 
 ```
-terraform workspace new demo-workspace-001
+terraform workspace new test-environment
 ```
 
-Update the `hello-world` app configuration to interpolate the workspace name into the configuration. This can be done with the `${terraform.workspace}` syntax. In this example, the Azure resource group name and container fqdn are appended with the workspace name.
+Update the `hello-world` app configuration to interpolate the workspace name into the configuration. This can be done with the `${terraform.workspace}` syntax. In this example, the Azure **resource group name** and container **dns name** are appended with the workspace name.
 
 ```
 resource "azurerm_resource_group" "hello-world" {
@@ -41,7 +41,10 @@ resource "azurerm_container_group" "hello-world" {
     image  = "${var.container-image}"
     cpu    = "0.5"
     memory = "1.5"
-    port   = "80"
+    ports {
+      port      = 80
+      protocol  = "TCP"
+    }
   }
 }
 ```
@@ -64,7 +67,7 @@ terraform apply plan.out
 Create a second workspace with the `terraform workspace new` command.
 
 ```
-terraform workspace new demo-workspace-002
+terraform workspace new production-environment
 ```
 
 Create a new plan for the hello-world configuration.
@@ -87,22 +90,34 @@ List the Terraform workspaces with the `terraform workspace list` command. You s
 $ terraform workspace list
 
   default
-  demo-workspace-001
-* demo-workspace-002
+* production-environment
+  test-environment
 ```
 
 Taking a look at the backend, we can see the state file for each workspace.
 
 ![](../images/workspace-backend.jpg)
 
+You can also notice, that we now have an instances of the application for each workspace, each in its own Azure resource group.
+
+```
+$ az group list -o table
+
+Name                                Location    Status
+----------------------------------  ----------  ---------
+hello-world                         eastus      Succeeded
+hello-world-production-environment  eastus      Succeeded
+hello-world-test-environment        eastus      Succeeded
+```
+
 ## Remove Workspace
 
 To remove a workspace, first destroy the current configuration and delete the workspace.
 
-Switch to the `demo-workspace-001` workspace.
+Switch to the `test-environment` workspace.
 
 ```
-terraform workspace select demo-workspace-001
+terraform workspace select test-environment
 ```
 
 Destroy the configuration.
@@ -117,10 +132,10 @@ Switch to the `default` workspace.
 terraform workspace select default
 ```
 
-Delete the `demo-workspace-001` workspace.
+Delete the `test-environment` workspace.
 
 ```
-workspace delete demo-workspace-001
+terraform workspace delete test-environment
 ```
 
 ## Issues with workspaces

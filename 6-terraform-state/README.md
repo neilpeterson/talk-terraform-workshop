@@ -61,12 +61,14 @@ Create a file names `backend.tf` and copy in the following configuration. Update
 ```
 terraform {
   backend "azurerm" {
-    storage_account_name  = "storage_account_name"
+    storage_account_name  = "<replcae>"
     container_name        = "tstate"
     key                   = "terraform.tfstate"
   }
 }
 ```
+
+Reinitalize the directory. Terraform will recognize the new backend configuration and prompt you to copy the exsisting state to the backend.
 
 ```
 terraform init

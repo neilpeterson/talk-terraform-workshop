@@ -40,8 +40,8 @@ resource "azurerm_container_group" "hello-world" {
     cpu    = "0.5"
     memory = "1.5"
     ports {
-      port   = 80
-      protocol ="TCP"
+      port      = 80
+      protocol  = "TCP"
     }
   }
 }
@@ -74,9 +74,9 @@ You can validate that the container has been created using the Azure CLI `az con
 ```
 az container list -o table
 
-Name      ResourceGroup    Status     Image                     IP:ports          Network    CPU/Memory       OsType    Location
---------  ---------------  ---------  ------------------------  ----------------  ---------  ---------------  --------  ----------
-hello-world  hello-world         Succeeded  microsoft/aci-helloworld  52.191.238.58:80  Public     0.5 core/1.5 gb  Linux     eastus
+Name         ResourceGroup    Status     Image                     IP:ports          Network    CPU/Memory       OsType    Location
+-----------  ---------------  ---------  ------------------------  ----------------  ---------  ---------------  --------  ----------
+hello-world  hello-world      Succeeded  microsoft/aci-helloworld  52.191.236.89:80  Public     0.5 core/1.5 gb  Linux     eastus
 ```
 
 The containers public IP address can be used to see the running application.

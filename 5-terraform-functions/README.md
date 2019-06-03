@@ -38,7 +38,7 @@ exit
 
 ## Update container name to use lower function
 
-Open the `main.tf` file created in the last module and update the name of the Azure Container Instance to use the `lower` function. If needed, you can create a new file and copy in the following configuration.
+Open the `main.tf` file created in the last module and update the name of the Azure Container Instance to use the `lower` function.
 
 ```
 resource "azurerm_resource_group" "hello-world" {
