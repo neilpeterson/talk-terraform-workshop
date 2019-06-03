@@ -61,7 +61,7 @@ Create a file names `backend.tf` and copy in the following configuration. Update
 ```
 terraform {
   backend "azurerm" {
-    storage_account_name  = "<replcae>"
+    storage_account_name  = "<replace>"
     container_name        = "tstate"
     key                   = "terraform.tfstate"
   }
@@ -83,7 +83,7 @@ Remove the local state files.
 
 ```
 rm terraform.tfstate
-rm rm terraform.tfstate.backup
+rm terraform.tfstate.backup
 ```
 
 We can also remove the script that was used to create the storage account.

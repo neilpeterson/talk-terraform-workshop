@@ -66,7 +66,10 @@ resource "azurerm_container_group" "hello-world" {
     image  = "${var.container-image}"
     cpu    = "0.5"
     memory = "1.5"
-    port   = "80"
+    ports {
+      port      = 80
+      protocol  = "TCP"
+    }
   }
 }
 ```

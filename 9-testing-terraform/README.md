@@ -49,6 +49,12 @@ func TestHelloWorld(t *testing.T) {
 
 ## Run the Tests
 
+Navigate back to the root of the Azure Cloud Shell drive.
+
+```
+cd ~/clouddrive
+```
+
 Clone the sample modules repository and set up the Go dependancies.
 
 ```

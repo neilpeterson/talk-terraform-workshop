@@ -21,9 +21,7 @@ Create a file name `main.tf` and add the following configuration.
 module "hello-world" {
     source = "../hello-world"
     resource_group = "hello-world-module"
-    location = "eastus"
     dns-prefix = "hello-world-module"
-    container-image = "microsoft/azure-vote-front:cosmosdb"
 }
 ```
 
