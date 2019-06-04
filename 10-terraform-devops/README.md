@@ -2,7 +2,7 @@
 
 ## Create configuration repository
 
-Create a repository of Terraform configurations. For this example, we will fork the workshop repo. Navigate to [https://github.com/neilpeterson/terraform-devops-samplep](https://github.com/neilpeterson/terraform-devops-sample) and fork the repo.
+Create a repository of Terraform configurations. For this example, we will fork the workshop repo. Navigate to [https://github.com/neilpeterson/terraform-modules.git](https://github.com/neilpeterson/terraform-modules.git) and fork the repo.
 
 Clone the repo into your cloud shell instance. Update the URL with the address of your fork.
 
