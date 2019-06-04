@@ -150,4 +150,4 @@ Consider using a well-formed directory structure with different backends for pro
 
 In the next module, you will learn about Terraform modules.
 
-Module 8: [Terraform Modules](../8-terraform-modules)
+Module 8: [Terraform Modules](../08-terraform-modules)

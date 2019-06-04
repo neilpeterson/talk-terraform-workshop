@@ -2,11 +2,11 @@
 
 ## Module Overview
 
-- Terraform functions
+Terraform functions allow us to transform, manipulate, and combine strings of text. This is useful for instance when wanting to control the CASING of a resource name. For more information on Terraform functions, see [Build-in Terraform Functiond](https://www.terraform.io/docs/configuration/functions.html).
 
 ## Use the Terraform console to experiment with Terraform functions
 
-Start the terraform console.
+Terraform includes a built-in console for testing Terraform function syntax. Start the console with the `terraform console` command.
 
 ```
 terraform console
@@ -67,7 +67,7 @@ resource "azurerm_container_group" "hello-world" {
 }
 ```
 
-Because we have not updated the providers beeing used, we do not need to re-initalize the directory.
+Because we have not updated the providers being used, we do not need to re-initialize the directory.
 
 Create the deployment plan. If you have been following along, the container instance name should have changed from `HelloWorld` to `helloworld` which should be noted in the plan.
 
@@ -112,4 +112,4 @@ The containers public IP address can be used to see the running application.
 
 In the next module, you will learn about Terraform state.
 
-Module 6: [Terraform State](../6-terraform-state)
+Module 6: [Terraform State](../06-terraform-state)

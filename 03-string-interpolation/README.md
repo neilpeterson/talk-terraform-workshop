@@ -2,12 +2,15 @@
 
 ## Module Overview
 
-- String Interpolation
-- Terraform Plan
+Terraform string interpolation allows us to embed values such as resource outputs and variables inside of strings. For more information on String Interpolation, see [Terraform Interpolation Syntax] (https://www.terraform.io/docs/configuration-0-11/interpolation.html).
+
+In this module, you will work with string interpolation. You will also be introduced to the `terraform plan` command.
+
+NOTE: Interpolation Syntax has changed significantly in Terraform Version 0.12.0. To use Terraform 0.12.0, switch to the 0.12.0 version of this workshop.
 
 ## Update configuration to include a Container Instance resource
 
-Open the previously created configuration found in the main.tf file. The contents should match the following. If needed, recreate the file.
+Open the previously created configuration found in the `main.tf` file. The contents should match the following. If needed, recreate the file.
 
 ```
 resource "azurerm_resource_group" "hello-world" {
@@ -16,7 +19,7 @@ resource "azurerm_resource_group" "hello-world" {
 }
 ```
 
-We now want to add an Azure Container Instance to the configuration. The trick is though that we want the resource created inside of the resource group that is also defined in the configuration. To do so we need the resource group, which can be derived using a process referred to as string interpolation.
+We now want to add an Azure Container Instance to the configuration. The trick is that we want the resource created inside of the resource group that is also defined in the configuration. To do so we need the resource group, which can be derived using a process referred to as string interpolation.
 
 Update the configuration so that it looks like this.
 
@@ -87,4 +90,4 @@ The containers public IP address can be used to see the running application.
 
 In the next module, you will learn about adding both input and output variables to a Terraform configuration.
 
-Module 4: [Terraform Variables](../4-terraform-variables)
+Module 4: [Terraform Variables](../04-terraform-variables)

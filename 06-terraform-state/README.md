@@ -96,4 +96,4 @@ rm storage.sh
 
 In the next module, you will learn about Terraform Workspaces.
 
-Module 7: [Terraform Workspaces](../7-terraform-workspaces)
+Module 7: [Terraform Workspaces](../07-terraform-workspaces)

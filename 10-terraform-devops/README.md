@@ -1,4 +1,4 @@
-# Integrating with DevOps Pipelines
+# Integrating with Azure Pipelines
 
 ## Create configuration repository
 

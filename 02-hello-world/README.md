@@ -2,21 +2,13 @@
 
 ## Module Overview
 
-- Basic Terraform configuration
-- Terraform init
-- Terraform Apply
-- Terraform Destroy
+In this module, you will be introduced to basic Terraform configuration syntax. You will also use the `terraform init`, `terrafrom apply`, and `terraform destroy` command.
 
 ## Create a simple Terraform configuration
 
 A Terraform configuration is a file or set of files that declare the resource to be created. Terraform configurations are written in Hashicorp Configuration Language (HCL) or JSON. For this workshop, we will work exclusively in HCL. For detailed specs on [HCL](https://www.terraform.io/docs/configuration/index.html).
 
-Create a directory named hello-world.
-
-```
-mkdir -p clouddrive/hello-world
-cd clouddrive/hello-world
-```
+Create a directory named `hello-world`.
 
 Create a file named `main.tf` and copy in the following configuration. This configuration includes a single resource block that creates an Azure Resource Group.
 
@@ -51,12 +43,12 @@ terraform apply
 To validate resource creation, use the Azure CLI `az group list` command.
 
 ```
-az group list -o table
+$ az group list -o table
 
 
 Name             Location    Status
 ---------------  ----------  ---------
-hello-world         eastus      Succeeded
+hello-world      eastus      Succeeded
 ```
 
 Now that the Terraform configuration has been applied, the configuration can also be destroyed using the `terraform destroy` command.
@@ -69,4 +61,4 @@ terraform destroy
 
 In the next module, you will learn about how to link resources together using String Interpolation. You will also learn about the `terraform plan` command.
 
-Module 3: [String Interpolation](../3-string-interpolation)
+Module 3: [String Interpolation](../03-string-interpolation)

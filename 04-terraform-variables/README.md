@@ -2,6 +2,10 @@
 
 ## Module Overview
 
+Terraform input variables are used to parameterize Terraform configurations. Learn more about Terraform input variables at the [Terraform Input Variables Documetnation](https://www.terraform.io/docs/configuration/variables.html). Output variables are used to return data after a Terraform configuration has been run. Learn more about Terraform out variables at the [Terraform Output Variables Documetnation](https://www.terraform.io/docs/configuration/outputs.html).
+
+In this module you will explore:
+
 - Input variables
 - Output variables
 
@@ -143,4 +147,4 @@ The containers public IP address can be used to access the running application.
 
 In the next module, you will learn about Terraform functions.
 
-Module 5: [Terraform Functions](../5-terraform-functions)
+Module 5: [Terraform Functions](../05-terraform-functions)
