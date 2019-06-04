@@ -24,31 +24,62 @@ Once you have created the organization, a DevOps project is automatically create
 
 Pipelines > Build > New Pipeline > GitHub (YAML)
 
-Select the GitHub repository that contains the Terraform configuraions
+Select the GitHub repository that contains the Terraform configurations
 
 Approve and install the Azure Pipelines > GitHub integration
 
-Exsisting Azure Pipelines YAML file
+Existing Azure Pipelines YAML file
 
 Path > pipeline.yaml
 
-## Create Release Pipline
+## Create Release Pipeline
 
-Pipelines > Release > New Pipeline
+Create a new release pipeline. YAML based release pipelines are in preview and do not yet support manual approvals, so we will work with classic pipelines for this workshop.
 
-Start with an empty job
+**Pipelines** > **Release** > **New Pipeline**
 
-Name first stage `Test (Resource Group)`
+Start with an empty job pipeline template.
 
-Add a `Command Line` task, give it a name of `Install Terraform on Release Agent`, and copy in the following script:
+![](../images/empty-job.jpg)
+
+Name the first stage `Test (Resource Group)`. We will add a production stage later in this module.
+
+![](../images/stage-one.jpg)
+
+Add the deployment artifacts created during the build.
+
+Select **Artifacts** > **Add** > **Build** > **terraform-modules-CI** > **Add**
+
+![](../images/deployment-artifacts.jpg)
+
+Select the stage to edit the stage tasks.
+
+Select the parent task named `Agent job` and update the Agent pool to use `Hosted Ubuntu 1604` as the operating system for the build agent.
+
+![](../images/build-agent.jpg)
+
+Add a `Command Line` task, give it a name of `Terraform Init`, and copy in the following commands:
 
 ```
-ENV TERRAFORM_VERSION=0.11.13
-apt-get install unzip
-wget https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip
-unzip terraform_0.11.13_linux_amd64.zip
-sudo mv terraform /usr/local/bin/
+cd _terraform-modules-CI/drop/modules/hello-world
+terraform init
 ```
+
+Add a `Command Line` task, give it a name of `Terraform Plan`, and copy in the following commands:
+
+```
+cd _terraform-modules-CI/drop/modules/hello-world
+terraform plan --out plan.out
+```
+
+Add a `Command Line` task, give it a name of `Terraform Apply`, and copy in the following commands:
+
+```
+cd _terraform-modules-CI/drop/modules/hello-world
+terraform plan --out plan.out --var resource_group=hello-world-test-$(Build.BuildId)
+```
+
+The last step is to configure credentials that have access to create Azure resources. For this step, we will create an Azure service principal and store the values in encrypted Azure DevOps variables.
 
 ## Next Module
 
