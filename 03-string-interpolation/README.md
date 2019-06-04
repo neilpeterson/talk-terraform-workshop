@@ -2,7 +2,7 @@
 
 ## Module Overview
 
-Terraform string interpolation allows us to embed values such as resource outputs and variables inside of strings. For more information on String Interpolation, see [Terraform Interpolation Syntax] (https://www.terraform.io/docs/configuration-0-11/interpolation.html).
+Terraform string interpolation allows us to embed values such as resource outputs and variables inside of strings. For more information on String Interpolation, see [Terraform Interpolation Syntax](https://www.terraform.io/docs/configuration-0-11/interpolation.html).
 
 In this module, you will work with string interpolation. You will also be introduced to the `terraform plan` command.
 

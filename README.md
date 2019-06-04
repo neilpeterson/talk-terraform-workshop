@@ -14,4 +14,4 @@ If you would like to quickly deploy an application to Azure using Terraform, see
 - [8 Modules](./08-terraform-modules)
 - [9 Testing](./09-testing-terraform)
 - [10 DevOps](./10-terraform-devops)
-- [11 Cloud Native Applicaton Bundles](./11-cnab)
+- [11 Cloud Native Applicaton Bundles](./11-terraform-cnab)

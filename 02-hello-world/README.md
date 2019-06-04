@@ -2,7 +2,7 @@
 
 ## Module Overview
 
-In this module, you will be introduced to basic Terraform configuration syntax. You will also use the `terraform init`, `terrafrom apply`, and `terraform destroy` command.
+In this module, you will be introduced to basic Terraform configuration syntax. You will also use the `terraform init`, `terrafrom apply`, and `terraform destroy` commands.
 
 ## Create a simple Terraform configuration
 
