@@ -2,9 +2,7 @@
 
 ## Module Overview
 
-- Configure multiple workspaces
-- Workspace interpolation
-- Workspaces on the backend
+In many cases, a Terraform configuration will be applied to multiple environments, perhaps test, QA, and production. Terraform includes a namespacing system named workspaces for logically separating state between environments. In this module, you will create multiple workspaces, deploy a configuration to each, and delete a workspace.
 
 ## First Workspace
 
@@ -98,7 +96,7 @@ Taking a look at the backend, we can see the state file for each workspace.
 
 ![](../images/workspace-backend.jpg)
 
-You can also notice, that we now have an instances of the application for each workspace, each in its own Azure resource group.
+You can also notice, that we now have an instance of the application for each workspace, each in its own Azure resource group.
 
 ```
 $ az group list -o table
@@ -112,7 +110,7 @@ hello-world-test-environment        eastus      Succeeded
 
 ## Remove Workspace
 
-To remove a workspace, first destroy the current configuration and delete the workspace.
+To remove a workspace, first, destroy the current configuration and delete the workspace.
 
 Switch to the `test-environment` workspace.
 

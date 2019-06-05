@@ -2,9 +2,14 @@
 
 ## Module Overview
 
-- Create an Azure Storage account
-- Configure backend state store
-- Delete and recreate state
+Terraform state stores information about your Terraform managed infrastructure. By default, Terraform state is stored locally, however, there are many disadvantages in this configuration:
+
+- Local state does not facilitate collaborative work
+- State file may contain sensitive information
+
+To address these issue, Terraform state can be stored in an encrypted and shared back end state store.
+
+In this module, you will create a backend state store in an Azure Storage account and will move the current state to the new backend.
 
 ## Create Azure Storage Account
 
@@ -68,7 +73,7 @@ terraform {
 }
 ```
 
-Reinitalize the directory. Terraform will recognize the new backend configuration and prompt you to copy the exsisting state to the backend.
+Reinitialize the directory. Terraform will recognize the new backend configuration and prompt you to copy the existing state to the backend.
 
 ```
 terraform init

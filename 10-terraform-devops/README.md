@@ -70,8 +70,6 @@ $ az ad sp create-for-rbac
 }
 ```
 
-NOTE: This operation created an account with admin access to your Azure subscription. Take care to secure the credentials and see [this article](https://docs.microsoft.com/en-us/azure/security/azure-security-identity-management-best-practices?WT.mc_id=cloudnativeterraform-github-nepeters) for more information on limiting the scope of this account.
-
 **Azure Subscription ID**
 
 You will also need your Azure subscription id. Use the [az account list](https://docs.microsoft.com/en-us/cli/azure/account?WT.mc_id=cloudnativeterraform-github-nepeters#az-account-list) command to find this value.
@@ -106,15 +104,11 @@ Back in the Azure Pipeline, click *Builds* > *Edit*. Click on the ellipsis near 
 
 Add the following variables, encrypting each one with the lock button.
 
-**ARM_ACCESS_KEY**: Storage account key for the state backend.
-
-**ARM_CLIENT_ID**: The service principal appId.
-
-A**RM_CLIENT_SECRET**: The service principal password.
-
-**ARM_TENANT_ID**: The tenant id which can be found with the service principal information.
-
-**ARM_SUBSCRIPTION_ID**: The Azure subscription id.
+- **ARM_ACCESS_KEY**: Storage account key for the state backend.
+- **ARM_CLIENT_ID**: The service principal appId.
+- **RM_CLIENT_SECRET**: The service principal password.
+- **ARM_TENANT_ID**: The tenant id which can be found with the service principal information.
+- **ARM_SUBSCRIPTION_ID**: The Azure subscription id.
 
 ![](../images/encrypted-variables.jpg)
 
@@ -166,6 +160,8 @@ terraform plan --out plan.out --var resource_group=hello-world-test-$(Build.Buil
 ```
 
 The last step is to configure credentials that have access to create Azure resources. For this step, we will create an Azure service principal and store the values in encrypted Azure DevOps variables.
+
+Now run the pipeline again, this time eeverything should work.
 
 ## Next Module
 
