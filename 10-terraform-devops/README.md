@@ -2,6 +2,8 @@
 
 ## Module Overview
 
+In this module, you will package up many of the concepts learned throughout the workshop into an automated build and release pipeline. There are a bunch of steps in this module. For the best experience, work along with the workshop instructor in completing each step.
+
 ## Create configuration repository
 
 Create a repository of Terraform modules.
@@ -54,11 +56,11 @@ Click the **Run** button to kick off the initial build.
 
 ## Add Azure Credentials
 
-In order for you to run terratest integration test, you will need to provide credentials to the pipeline.
+In order for you to run Terratest integration test, you will need to provide credentials to the pipeline.
 
 **Service Principal**
 
-First, use the Azure CLI [az ad sp create-for-rback](https://docs.microsoft.com/en-us/cli/azure/ad/sp?WT.mc_id=cloudnativeterraform-github-nepeters#az-ad-sp-create-for-rbac) command to create an Azure Service Principal. Take note of each value, these will be added to the pipeline.
+First, use the Azure CLI [az ad sp create-for-rbac](https://docs.microsoft.com/en-us/cli/azure/ad/sp?WT.mc_id=cloudnativeterraform-github-nepeters#az-ad-sp-create-for-rbac) command to create an Azure Service Principal. Take note of each value, these will be added to the pipeline.
 
 ```
 $ az ad sp create-for-rbac
