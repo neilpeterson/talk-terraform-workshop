@@ -2,23 +2,19 @@
 
 ## Create configuration repository
 
-Create a repository of Terraform configurations. For this example, we will fork the workshop repo. Navigate to [https://github.com/neilpeterson/terraform-modules.git](https://github.com/neilpeterson/terraform-modules.git) and fork the repo.
+Create a repository of Terraform modules.
 
-Clone the repo into your cloud shell instance. Update the URL with the address of your fork.
-
-```
-git clone https://github.com/<replace>/terraform-devops-sample.git
-```
+Navigate to [https://github.com/neilpeterson/terraform-modules.git](https://github.com/neilpeterson/terraform-modules.git) and fork the repo.
 
 ## Create an Azure DevOps instance
 
 If needed, create an Azure DevOps instance. Azure DevOps is free for open source projects, including this workshop.
 
-Navigate to [https://azure.microsoft.com/en-ca/services/devops/](https://azure.microsoft.com/en-ca/services/devops/?WT.mc_id=cloudnativeterraform-github-nepeters) and sign up for a free Azure DevOps organization.
+Navigate to [https://azure.microsoft.com/en-ca/services/devops](https://azure.microsoft.com/en-ca/services/devops/?WT.mc_id=cloudnativeterraform-github-nepeters) and sign up for a free Azure DevOps organization.
 
 ![](../images/azd-one.jpg)
 
-Once you have created the organization, you will be prompted to create a new project. The DevOps project is where you can create and manage Azure Boards, Azure Repositories, and Azure Pipelines.
+Once you have created the organization, you will be prompted to create a new project.
 
 ![](../images/new-project.jpg)
 
@@ -38,11 +34,11 @@ Approve and install the Azure Pipelines > GitHub integration
 
 ![](../images/authorize.jpg)
 
-Existing Azure Pipelines YAML file
+If you have forked the sample repo, an Azure Pipeline YAML file has been pre-created in the repository. Select *Existing Azure Pipelines YAML file*.
 
 ![](../images/pipeline-type.jpg)
 
-*Path* > *build-pipeline.yaml*
+The pipeline file is named *build-pipeline.yaml*. Enter this value for the path.
 
 ![](../images/path.jpg)
 
@@ -52,15 +48,15 @@ At this point, the pipeline should have been imported.
 
 Click the **Run** button to kick off the initial build.
 
-....unfortunately the build will fail.
+....unfortunately, the build will fail.
 
 ## Add Azure Credentials
 
 In order for you to run terratest integration test, you will need to provide credentials to the pipeline.
 
-First, use the Azure CLI [az ad sp create-for-rback]() command to create an Azure Service Principal. Take note of each value, these will be added to the pipeline.
+**Service Principal**
 
-NOTE: This operation created an account with admin access to your Azure subscription. Take care to secure the credentials and see [this article] for more information on limiting the scope of this account.
+First, use the Azure CLI [az ad sp create-for-rback](https://docs.microsoft.com/en-us/cli/azure/ad/sp?WT.mc_id=cloudnativeterraform-github-nepeters#az-ad-sp-create-for-rbac) command to create an Azure Service Principal. Take note of each value, these will be added to the pipeline.
 
 ```
 $ az ad sp create-for-rbac
@@ -74,7 +70,11 @@ $ az ad sp create-for-rbac
 }
 ```
 
-You will also need your Azure subscription id. Use the [az account list] command to find this value.
+NOTE: This operation created an account with admin access to your Azure subscription. Take care to secure the credentials and see [this article](https://docs.microsoft.com/en-us/azure/security/azure-security-identity-management-best-practices?WT.mc_id=cloudnativeterraform-github-nepeters) for more information on limiting the scope of this account.
+
+**Azure Subscription ID**
+
+You will also need your Azure subscription id. Use the [az account list](https://docs.microsoft.com/en-us/cli/azure/account?WT.mc_id=cloudnativeterraform-github-nepeters#az-account-list) command to find this value.
 
 ```
 $ az account list -o table
@@ -84,9 +84,21 @@ Name                                         CloudName    SubscriptionId        
 ca-nepeters-demo-test                        AzureCloud   3000087c-0000-0000-0000-29e5e0000daf  Enabled  True
 ```
 
+**Storage Account Key**
+
 You will also need to gather the storage account key for the terraform state backend. This can be found in the Azure portal, or by using the [az storage account keys list]() command
 
-![](../images/storage-key.jpg)
+```
+$ az storage account keys list --resource-group nepeters-terraform-state --account-name nepetersterraformstate -o table
+
+KeyName    Permissions    Value
+---------  -------------  ----------------------------------------------------------------------------------------
+key1       Full           00000000000000000000000000000000000000000000000000000000000000000000000000000000000000==
+key2       Full           00000000000000000000000000000000000000000000000000000000000000000000000000000000000000==
+
+```
+
+**Configure Variables**
 
 Back in the Azure Pipeline, click *Builds* > *Edit*. Click on the ellipsis near the top left hand and click *Variables*.
 
@@ -94,11 +106,15 @@ Back in the Azure Pipeline, click *Builds* > *Edit*. Click on the ellipsis near 
 
 Add the following variables, encrypting each one with the lock button.
 
-ARM_ACCESS_KEY: Storage account key for the state backend.
-ARM_CLIENT_ID: The service principal appId.
-ARM_CLIENT_SECRET: The service principal password.
-ARM_TENANT_ID: The tenant id which can be found with the service principal information.
-ARM_SUBSCRIPTION_ID: The Azure subscription id.
+**ARM_ACCESS_KEY**: Storage account key for the state backend.
+
+**ARM_CLIENT_ID**: The service principal appId.
+
+A**RM_CLIENT_SECRET**: The service principal password.
+
+**ARM_TENANT_ID**: The tenant id which can be found with the service principal information.
+
+**ARM_SUBSCRIPTION_ID**: The Azure subscription id.
 
 ![](../images/encrypted-variables.jpg)
 
