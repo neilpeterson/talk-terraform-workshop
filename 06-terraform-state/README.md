@@ -84,16 +84,11 @@ At this point, a Terraform state file has been created in the Azure Blob.
 ![](../images/remote-state.jpg)
 
 
-Remove the local state files.
+Remove the local state files and the storage script.
 
 ```
 rm terraform.tfstate
 rm terraform.tfstate.backup
-```
-
-We can also remove the script that was used to create the storage account.
-
-```
 rm storage.sh
 ```
 

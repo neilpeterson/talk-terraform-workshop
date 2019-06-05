@@ -138,7 +138,7 @@ Once the deployment has completed, the output variable is displayed.
 ```
 Outputs:
 
-fqdn = hello-world.eastus.azurecontainer.io
+fqdn = hello-world-58716.eastus.azurecontainer.io
 ```
 
 The containers FQDN can be used to access the running application.
