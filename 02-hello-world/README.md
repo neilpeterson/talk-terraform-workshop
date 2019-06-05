@@ -8,7 +8,7 @@ In this module, you will be introduced to basic Terraform configuration syntax. 
 
 A Terraform configuration is a file or set of files that declare the resource to be created. Terraform configurations are written in Hashicorp Configuration Language (HCL) or JSON. For this workshop, we will work exclusively in HCL. For detailed specs on [HCL](https://www.terraform.io/docs/configuration/index.html).
 
-Create a directory named `hello-world`.
+Create a directory named `terraform-moduls` and then a directory under that named `hello-world`. Work inside of the `hello-world` directory until instructed otherwise.
 
 Create a file named `main.tf` and copy in the following configuration. This configuration includes a single resource block that creates an Azure Resource Group.
 

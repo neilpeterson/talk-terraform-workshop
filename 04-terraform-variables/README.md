@@ -52,12 +52,17 @@ resource "azurerm_resource_group" "hello-world" {
   location = "${var.location}"
 }
 
+resource "random_integer" "ri" {
+  min = 10000
+  max = 99999
+}
+
 resource "azurerm_container_group" "hello-world" {
   name                = "${var.container-name}"
   location            = "${azurerm_resource_group.hello-world.location}"
   resource_group_name = "${azurerm_resource_group.hello-world.name}"
   ip_address_type     = "public"
-  dns_name_label      = "${var.dns-prefix}"
+  dns_name_label      = "${var.dns-prefix}-${random_integer.ri.result}"
   os_type             = "linux"
 
   container {
@@ -81,11 +86,11 @@ Create a file named `outputs.tf` for the output variables.
 touch outputs.tf
 ```
 
-Copy in the following configuration. This configuration will output the public IP address of the container instance.
+Copy in the following configuration. This configuration will output the fully qualified domain name (FQDN) of the container instance.
 
 ```
-output "ip_address" {
-  value = "${azurerm_container_group.hello-world.ip_address}"
+output "fqdn" {
+  value = "${azurerm_container_group.hello-world.fqdn}"
 }
 ```
 
@@ -133,10 +138,10 @@ Once the deployment has completed, the output variable is displayed.
 ```
 Outputs:
 
-ip_address = 52.224.145.193
+fqdn = hello-world.eastus.azurecontainer.io
 ```
 
-The containers public IP address can be used to access the running application.
+The containers FQDN can be used to access the running application.
 
 ## Next Module
 

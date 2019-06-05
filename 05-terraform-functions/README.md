@@ -46,12 +46,17 @@ resource "azurerm_resource_group" "hello-world" {
   location = "${var.location}"
 }
 
+resource "random_integer" "ri" {
+  min = 10000
+  max = 99999
+}
+
 resource "azurerm_container_group" "hello-world" {
   name                = "${lower(var.container-name)}"
   location            = "${azurerm_resource_group.hello-world.location}"
   resource_group_name = "${azurerm_resource_group.hello-world.name}"
   ip_address_type     = "public"
-  dns_name_label      = "${var.dns-prefix}"
+  dns_name_label      = "${azurerm_resource_group.hello-world.name}-${random_integer.ri.result}"
   os_type             = "linux"
 
   container {
@@ -72,10 +77,8 @@ Because we have not updated the providers being used, we do not need to re-initi
 Create the deployment plan. If you have been following along, the container instance name should have changed from `HelloWorld` to `helloworld` which should be noted in the plan.
 
 ```
-terraform plan --out plan.out
-```
+$ terraform plan --out plan.out
 
-```
 -/+ azurerm_container_group.hello-world (new resource required)
       id:                     "/subscriptions/3762d87c-ddb8-425f-b2fc-29e5e859edaf/resourceGroups/hello-world/providers/Microsoft.ContainerInstance/containerGroups/HelloWorld" => <computed> (forces new resource)
       container.#:            "1" => "1"
@@ -106,7 +109,7 @@ Use `terraform apply plan.out` to apply the plan.
 terraform apply plan.out
 ```
 
-The containers public IP address can be used to see the running application.
+The containers FQDN can be used to see the running application.
 
 ## Next Module
 

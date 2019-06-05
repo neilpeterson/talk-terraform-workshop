@@ -199,6 +199,10 @@ Click **Save** > **ok** > **Create Release** > and follow the prompts.
 
 ![](../images/release.jpg)
 
+## Create a produciton stage with approval
+
+
+
 ## Next Module
 
 In the next module, you will learn about deploying Terraform with Cloud Native Application Bundles.
