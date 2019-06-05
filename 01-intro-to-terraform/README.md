@@ -1,6 +1,4 @@
-# Introduction to Terraform
-
-## Module Overview
+# Workshop Introduction
 
 ## Azure Trial
 

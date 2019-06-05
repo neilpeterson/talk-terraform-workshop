@@ -108,11 +108,21 @@ Add the following variables, encrypting each one with the lock button.
 
 - **ARM_ACCESS_KEY**: Storage account key for the state backend.
 - **ARM_CLIENT_ID**: The service principal appId.
-- **RM_CLIENT_SECRET**: The service principal password.
+- **ARM_CLIENT_SECRET**: The service principal password.
 - **ARM_TENANT_ID**: The tenant id which can be found with the service principal information.
 - **ARM_SUBSCRIPTION_ID**: The Azure subscription id.
 
 ![](../images/encrypted-variables.jpg)
+
+Click on the **Save and queue** button to start another build.
+
+Click on the new build number to observe build progress.
+
+![](../images/build.jpg)
+
+Once completed, assuming everything went well, you should see all tasks as successful.
+
+![](../images/build-complete.jpg)
 
 ## Create Release Pipeline
 
@@ -151,19 +161,41 @@ Add a `Command Line` task, give it a name of `Terraform Plan`, and copy in the f
 
 ```
 cd _terraform-modules-CI/drop/modules/hello-world
-terraform plan --out plan.out
+terraform init
+terraform workspace select hello-world-test-environment || terraform workspace new hello-world-test-environment
+terraform init
 ```
 
 Add a `Command Line` task, give it a name of `Terraform Apply`, and copy in the following commands:
 
 ```
 cd _terraform-modules-CI/drop/modules/hello-world
-terraform plan --out plan.out --var resource_group=hello-world-test-$(Build.BuildId)
+terraform apply plan.out
 ```
 
-The last step is to configure credentials that have access to create Azure resources. For this step, we will create an Azure service principal and store the values in encrypted Azure DevOps variables.
+We now need to configure variables for the release pipeline to hold Azure authentication credentials. Just as before, the following variables need to be set.
 
-Now run the pipeline again, this time eeverything should work.
+Add the following variables, encrypting each one with the lock button.
+
+- **ARM_ACCESS_KEY**: Storage account key for the state backend.
+- **ARM_CLIENT_ID**: The service principal appId.
+- **ARM_CLIENT_SECRET**: The service principal password.
+- **ARM_TENANT_ID**: The tenant id which can be found with the service principal information.
+- **ARM_SUBSCRIPTION_ID**: The Azure subscription id.
+
+To do so, click on variables and add each variable.
+
+![](../images/release-variables.jpg)
+
+Finally, because the variables are encrypted, we need to specify each one as an environment variable on the task that will consume this. Click back on the pipeline, select the **Terraform Apply** task, expand **Environment Variables**, and add each variable as seen in the following image.
+
+![](../images/task-variables.jpg)
+
+Next, add only the **ARM_ACCESS_KEY** variable to both the **Terraform init** and **Terraform Plan** tasks.
+
+Click **Save** > **ok** > **Create Release** > and follow the prompts.
+
+![](../images/release.jpg)
 
 ## Next Module
 
