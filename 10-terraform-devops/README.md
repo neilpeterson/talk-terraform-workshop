@@ -18,19 +18,37 @@ Navigate to [https://azure.microsoft.com/en-ca/services/devops/](https://azure.m
 
 ![](../images/azd-one.jpg)
 
-Once you have created the organization, a DevOps project is automatically created for you. The DevOps project is where you can create and manage Azure Boards, Azure Repositories, and Azure Pipelines. We will come back to the organization and work with Pipelines later in this module.
+Once you have created the organization, you will be prompted to create a new project. The DevOps project is where you can create and manage Azure Boards, Azure Repositories, and Azure Pipelines.
+
+![](../images/new-project.jpg)
 
 ## Create Build Pipeline
 
-Pipelines > Build > New Pipeline > GitHub (YAML)
+Create a new build pipeline.
+
+*Pipelines* > *Build* > *New Pipeline* > *GitHub (YAML)*
+
+![](../images/github-yaml.jpg)
 
 Select the GitHub repository that contains the Terraform configurations
 
+![](../images/select-repo.jpg)
+
 Approve and install the Azure Pipelines > GitHub integration
+
+![](../images/authorize.jpg)
 
 Existing Azure Pipelines YAML file
 
+![](../images/pipeline-type.jpg)
+
 Path > pipeline.yaml
+
+![](../images/path.jpg)
+
+At this point, the pipeline should have been imported.
+
+![](../images/pipeline.jpg)
 
 ## Create Release Pipeline
 

@@ -4,11 +4,6 @@
 
 Terraform input variables are used to parameterize Terraform configurations. Learn more about Terraform input variables at the [Terraform Input Variables Documetnation](https://www.terraform.io/docs/configuration/variables.html). Output variables are used to return data after a Terraform configuration has been run. Learn more about Terraform out variables at the [Terraform Output Variables Documetnation](https://www.terraform.io/docs/configuration/outputs.html).
 
-In this module you will explore:
-
-- Input variables
-- Output variables
-
 ## Create variables file
 
 Create a new file named `variables.tf`. This file will hold variables and default variable values that can be used in your Terraform configurations. A separate file for variables is optional. Variables can also be defined in the same files as your Terraform configurations.

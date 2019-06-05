@@ -7,12 +7,16 @@ steps:
    wget https://dl.google.com/go/go1.12.2.linux-amd64.tar.gz
    sudo tar -xvf go1.12.2.linux-amd64.tar.gz
    sudo mv go /usr/local
+
+
    export GOPATH=$(Build.Repository.LocalPath)
   displayName: 'Install Go on Build Agent'
 
 - script: |
    curl --location --silent --fail --show-error -o terratest_log_parser https://github.com/gruntwork-io/terratest/releases/download/v0.13.13/terratest_log_parser_linux_amd64
+
    chmod +x terratest_log_parser
+
    sudo mv terratest_log_parser /usr/local/bin
   displayName: 'Install Terratest Utilities'
 
@@ -46,4 +50,3 @@ steps:
   displayName: 'Publish Terraform Artifacts'
   inputs:
     targetPath: .
-

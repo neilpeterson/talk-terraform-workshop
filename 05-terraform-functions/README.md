@@ -2,9 +2,9 @@
 
 ## Module Overview
 
-Terraform functions allow us to transform, manipulate, and combine strings of text. This is useful for instance when wanting to control the CASING of a resource name. For more information on Terraform functions, see [Build-in Terraform Functiond](https://www.terraform.io/docs/configuration/functions.html).
+Terraform functions allow us to transform, manipulate, and combine strings of text. This is useful for instance when wanting to control the CASING of a resource name. For more information on Terraform functions, see [Built-in Terraform Functiond](https://www.terraform.io/docs/configuration/functions.html).
 
-## Use the Terraform console to experiment with Terraform functions
+## Use the Terraform console
 
 Terraform includes a built-in console for testing Terraform function syntax. Start the console with the `terraform console` command.
 
@@ -36,7 +36,7 @@ Exit the Terraform console with the `exit` command.
 exit
 ```
 
-## Update container name to use lower function
+## Update container name
 
 Open the `main.tf` file created in the last module and update the name of the Azure Container Instance to use the `lower` function.
 
