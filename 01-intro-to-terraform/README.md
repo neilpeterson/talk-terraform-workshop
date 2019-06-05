@@ -1,5 +1,7 @@
 # Introduction to Terraform
 
+## Module Overview
+
 ## Next Module
 
 In the next module, you will create a simple resource using Terraform.

@@ -1,68 +1,109 @@
-# Terraform and Cloud Native Application Bundles
+# Cloud Native Application Bundles
 
 ## Module Overview
 
-- Integration Terraform with Cloud Native application Bundles (CNAB)
+As we innovate and push the capability of cloud deployments, we are finding ourselves needing innovative tooling for deploying complex and cloud distributed applications to cloud resources. Our applications are no longer a single compiled package rather multiple packages, infrastructure components, policies, and control mechanisms. Some times these assets need to be deployed to multiple systems and potentially even multiple clouds. An emerging technology to address cloud deployments is Cloud Native Application Bundles (CNAB).
 
-## Install Duffle
+Cloud Native Application Bundles are a packaging format spec for cloud-based applications. CNAB bundles can be created, signed, stored in a container registry, and retrieved at deployment time. CNAB is just the packaging format. We also need tooling to create and manage bundles. For that, I introduce Porter the Cloud Installer.
 
-- Go > 1.11.4
-- make
+NOTE: This module will not work in Azure Cloud Shell. To complete, you must have a system running Docker.
 
-```
-go get -d github.com/deislabs/duffle/...
-cd $(go env GOPATH)/src/github.com/deislabs/duffle
-make bootstrap
-make build
-sudo make install
-```
+## Install Porter
 
-## Initilize Duffle and configure credentials
+Install Porter on your development system.
 
 ```
-duffle init
+curl https://cdn.deislabs.io/porter/latest/install-mac.sh | bash
 ```
 
-Create a credentials file.
+Add Porter to the path.
 
 ```
-touch ~/.duffle/credentials/azure.json
+export PATH=$PATH:~/.porter
 ```
 
-Update the following with valid Azure credentials and copy into the credentials file.
+Install the Terraform mixin.
 
 ```
+porter mixin install terraform --feed-url https://cdn.deislabs.io/porter/atom.xml
+```
+
+## Create Porter Bundle
+
+Create a directory for your Porter bundle.
+
+```
+mkdir porter
+cd porter
+```
+
+Bootstrap the Porter bundle.
+
+```
+porter create
+```
+
+Replace the contents of the `porter.yaml` file with this YAML.
+
+```
+mixins:
+  - exec
+  - terraform
+
+name: hello-porter
+version: 0.1.0
+invocationImage: neilpeterson/hello-porter:latest
+
 credentials:
-  - name: azureclientid
-    source:
-      value: "00000000-0000-0000-0000-000000000000"
-  - name: azureclientsecret
-    source:
-      value: "00000000-0000-0000-0000-000000000000"
-  - name: azuretenantid
-    source:
-      value: "00000000-0000-0000-0000-000000000000"
+  - name: subscription_id
+    env: TF_VAR_subscription_id
+  - name: tenant_id
+    env: TF_VAR_tenant_id
+  - name: client_id
+    env: TF_VAR_client_id
+  - name: client_secret
+    env: TF_VAR_client_secret
+
+parameters:
+  - name: location
+    type: string
+    default: "East US"
+    destination:
+      env: TF_VAR_location
+
+  - name: resource_group_name
+    type: string
+    default: "porterkvtest"
+    destination:
+      env: TF_VAR_resource_group_name
+
+install:
+  - terraform:
+      description: "Install Hello World"
+      autoApprove: true
+      input: false
+
+upgrade:
+  - terraform:
+      description: "Upgrade Hello World"
+      autoApprove: true
+      input: false
+
+status:
+  - terraform:
+      description: "Get Hello World status"
+
+uninstall:
+  - terraform:
+      description: "Uninstall Hello World"
+      autoApprove: true
 ```
 
-## Get the Terraform bundle
 
 ```
-git clone https://github.com/neilpeterson/duffle-bundles.git
-cd duffle-bundles/cnab-terraform-demo/
-```
-
-```
-duffle build .
+porter build
 ```
 
 ```
-duffle bundle list
-
-NAME               	VERSION	DIGEST
-cnab-terraform-demo	0.1.0  	c5bc518ba370682abada3bfa85aa6075bebe6395
+porter list
 ```
-
-```
-duffle install --credentials=azure cnab-terraform-demo cnab-terraform-demo:0.1.0
-```
-

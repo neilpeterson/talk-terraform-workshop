@@ -1,6 +1,12 @@
 # Testing Terraform Configurations
 
+## Module Overview
+
+Just like with application code, the ability to test infrastructure code before committing to production enables effective continuous deployment. Unlike with application code, performing unit tests on infrastructure code is not simple. Integration testing, however, can be achieved using your own automation or one of many available packages. In this module, you will perform an integration test on the hello world application using a well know package named Terratest. For more information on Terratest, see the [GitHub project](https://github.com/gruntwork-io/terratest).
+
 ## Terraform Tests with Terratest
+
+Terratest is a go library, and such all tests are written in go lang. The workshop instructor will walk through the following sample.
 
 ```
 package test
@@ -49,16 +55,19 @@ func TestHelloWorld(t *testing.T) {
 
 ## Run the Tests
 
-Navigate back to the root of the Azure Cloud Shell drive.
+For this workshop, we have pre-created a modules repo with included tests. Go ahead and create a fork of this repository. This fork will be used in this workshop module and the next.
+
+https://github.com/neilpeterson/terraform-modules.git
+
+Navigate back to the root of your terraform directory and clone your modules fork into the directory. Update the following command with the address of your fork.
 
 ```
-cd ~/clouddrive
+git clone https://github.com/<update>/terraform-modules.git
 ```
 
-Clone the sample modules repository and set up the Go dependancies.
+Navigate to the tests directory and fetch the Terratest library.
 
 ```
-git clone https://github.com/neilpeterson/terraform-modules.git
 cd terraform-modules/test/
 go get github.com/gruntwork-io/terratest/modules/terraform
 ```
