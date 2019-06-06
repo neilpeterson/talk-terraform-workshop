@@ -2,11 +2,7 @@
 
 ## Module Overview
 
-In this module, you will package up many of the concepts learned throughout the workshop into an automated build pipeline.
-
-## Create configuration repository
-
-Navigate to [https://github.com/neilpeterson/terraform-modules.git](https://github.com/neilpeterson/terraform-modules.git) and fork the repository.
+In this module, you will package up many of the concepts learned throughout the workshop into an automated build pipeline. The content in this module assumes that you have been working along with the workshop and have allready forked [this repo](https://github.com/neilpeterson/terraform-modules.git).
 
 ## Create an Azure DevOps instance
 
