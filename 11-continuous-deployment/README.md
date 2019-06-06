@@ -44,7 +44,7 @@ Copy in the following commands.
 ```
 cd source-alias/drop/modules/hello-world
 terraform init
-terraform plan --out plan.out
+terraform plan --out plan.out -var resource_group=hello-world-test-environment -var dns-prefix=hello-world-test-environment
 terraform apply plan.out
 ```
 
