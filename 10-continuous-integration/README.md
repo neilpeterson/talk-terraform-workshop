@@ -10,11 +10,9 @@ If needed, create an Azure DevOps instance. Azure DevOps is free for open source
 
 Navigate to [https://azure.microsoft.com/en-ca/services/devops](https://azure.microsoft.com/en-ca/services/devops/?WT.mc_id=cloudnativeterraform-github-nepeters) and sign up for a free Azure DevOps organization.
 
-![](../images/azd-one.jpg)
-
 Once you have created the organization, you may be prompted to create a new project.
 
-![](../images/new-project.jpg)
+![](../images/new-project-small.jpg)
 
 ## Create Build Pipeline
 
