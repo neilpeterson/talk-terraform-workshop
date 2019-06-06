@@ -81,7 +81,7 @@ Create a variable group named `azure-credentials` and add the following variable
 
 ![](../images/variable-group.jpg)
 
-Click on the **Save and queue** button to start another build. Click on the new build number to observe build progress.
+Click on the **Save**, navigate back to the pipeline, and click the **queue** button to start a new build. Select the build to see the progress.
 
 ![](../images/build.jpg)
 
