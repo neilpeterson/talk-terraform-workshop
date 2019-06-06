@@ -65,18 +65,6 @@ Navigate back to the root of your terraform directory and clone your modules for
 git clone https://github.com/<update>/terraform-modules.git
 ```
 
-Navigate to the `modules/hello-world` directory and update the `backend.tf` file with the name of the storage account that you are using for state.
-
-```
-terraform {
-  backend "azurerm" {
-    storage_account_name  = "<update"
-    container_name        = "tstate"
-    key                   = "terraform.tfstate"
-  }
-}
-```
-
 Navigate to the `test` directory and fetch the Terratest library.
 
 ```
@@ -101,6 +89,6 @@ ok      _/home/neil/clouddrive/terraform-modules/test   148.223s
 
 ## Next Module
 
-In the next module, you will learn about testing and running Terraform configurations from CI/CD pipelines.
+In the next module, you will learn about automated integration testing of Terraform configurations in Azure Build Pipelines.
 
-Module 11: [Terraform and CI/CD pipelines](../10-terraform-devops)
+Module 10: [Continious Integration](../10-continuous-integration)
