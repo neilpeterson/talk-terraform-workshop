@@ -121,4 +121,4 @@ These Azure Pipeline examples have not included remote state. As an additional c
 
 In the next module, you will learn about deploying Terraform with Cloud Native Application Bundles.
 
-Module 12: [Terraform and CNAB](../11-terraform-cnab)
+Module 12: [Terraform and CNAB](../12-terraform-cnab)
