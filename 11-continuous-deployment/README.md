@@ -31,7 +31,7 @@ Select the test stage to edit the stage tasks.
 
 ![](../images/stage-tasks.jpg)
 
-Update the Agent pool to use `Hosted Ubuntu 1604` as the operating system for the build agent.
+Select **Agent job** and update the **Agent pool** to use `Hosted Ubuntu 1604` as the operating system for the build agent.
 
 ![](../images/build-agent.jpg)
 
@@ -39,7 +39,9 @@ Add a **Command Line** task, give it a name of `Terraform Deploy Test`.
 
 ![](../images/command-line.jpg)
 
-Copy in the following commands. Update the first line (source-alias) to include the source alias gather in a previous step.
+Copy in the following commands.
+
+**Update the first line** (source-alias) to include the source alias gather in a previous step.
 
 ```
 cd source-alias/drop/modules/hello-world
