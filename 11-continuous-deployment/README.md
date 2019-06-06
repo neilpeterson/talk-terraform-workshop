@@ -1,4 +1,4 @@
- # Integrating with Azure Pipelines
+# Approving and deploying Terraform configuration with Azure Pipelines
 
 ## Module Overview
 
@@ -14,7 +14,7 @@ Start with an empty job pipeline template.
 
 ![](../images/empty-job.jpg)
 
-Name the first stage `Test (Resource Group)`. We will add a production stage later in this module.
+Name the first stage `Test (Resource Group)`.
 
 ![](../images/stage-one.jpg)
 
@@ -24,11 +24,15 @@ Select **Artifacts** > **Add** > **Build** > **terraform-modules-CI** > **Add**
 
 ![](../images/deployment-artifacts.jpg)
 
-Select the test stage and then the parent task named `Agent job`. Update the Agent pool to use `Hosted Ubuntu 1604` as the operating system for the build agent.
+Select the test stage and then the parent task named `Agent job`.
+
+Update the Agent pool to use `Hosted Ubuntu 1604` as the operating system for the build agent.
 
 ![](../images/build-agent.jpg)
 
-Add a `Command Line` task, give it a name of `Terraform Deploy Test`, and copy in the following commands. Update the first line to include the source alias gather in a previous step.
+Add a `Command Line` task, give it a name of `Terraform Deploy Test`, and copy in the following commands.
+
+Update the first line to include the source alias gather in a previous step.
 
 ```
 cd <source alias>/drop/modules/hello-world
@@ -37,7 +41,9 @@ terraform plan --out plan.out
 terraform apply plan.out
 ```
 
-Finally, add Azure credentials to the deployment task. Select **Variables** > **Link Variable Group** > **azure-credentials** > **Link**.
+Finally, add Azure credentials to the deployment task.
+
+Select **Variables** > **Link Variable Group** > **azure-credentials** > **Link**.
 
 ![](../images/link-variables.jpg)
 
