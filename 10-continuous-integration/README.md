@@ -1,12 +1,10 @@
-# Integrating with Azure Pipelines
+# Automating tests and builds with Azure Pipelines
 
 ## Module Overview
 
 In this module, you will package up many of the concepts learned throughout the workshop into an automated build pipeline.
 
 ## Create configuration repository
-
-Create a repository of Terraform modules.
 
 Navigate to [https://github.com/neilpeterson/terraform-modules.git](https://github.com/neilpeterson/terraform-modules.git) and fork the repository.
 
