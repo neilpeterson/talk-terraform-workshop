@@ -18,8 +18,6 @@ Once you have created the organization, you may be prompted to create a new proj
 
 ## Create Build Pipeline
 
-Create a new build pipeline.
-
 *Pipelines* > *Build* > *New Pipeline* > *GitHub (YAML)*
 
 ![](../images/github-yaml.jpg)
