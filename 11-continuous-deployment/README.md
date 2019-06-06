@@ -89,7 +89,7 @@ Update the stage and task name so that they indicate a production deployment.
 
 ![](../images/production.jpg)
 
-Return to the pipeline and select pre-deployment conditions on the production stage.
+Return to the pipeline and select **pre-deployment conditions** on the production stage.
 
 ![](../images/conditions.jpg)
 
@@ -97,7 +97,25 @@ Select **Pre-deployment approvals**, and add your account as an approver.
 
 ![](../images/approval.jpg)
 
-Click **Save** and **Create Release** to start a new deployment.
+Click **Save** and **Ok**.
+
+![](../images/save-two.jpg)
+
+Click **Create Release** and **Create** to start a new release and select the release link to observer status.
+
+![](../images/release-two.jpg)
+
+Once the test release has successfully deployed, the production release will need to be approved. Check out the test release, and if it looks good, approve the production release using the approve button.
+
+![](../images/approve-release.jpg)
+
+When done, you should see both the test and production release in the Azure portal.
+
+![](../images/both-release.jpg)
+
+## Extra Credit
+
+These Azure Pipeline examples have not included remote state. As an additional challenge, see if you can insert the logic to store both the test and production state in an Azure backend.
 
 ## Next Module
 
