@@ -76,7 +76,9 @@ Name                                         CloudName    SubscriptionId        
 ca-nepeters-demo-test                        AzureCloud   3000087c-0000-0000-0000-29e5e0000daf  Enabled  True
 ```
 
-Back in the Azure Pipeline, click *Library* > *Variable Groups*. Create a variable group named `azure-credentials` and add the following variables, encrypting each one with the lock button.
+Back in the Azure Pipeline, click **Library** > **Variable Groups**.
+
+Create a variable group named `azure-credentials` and add the following variables, encrypting each one with the lock button.
 
 - **ARM_CLIENT_ID**: The service principal appId.
 - **ARM_CLIENT_SECRET**: The service principal password.
