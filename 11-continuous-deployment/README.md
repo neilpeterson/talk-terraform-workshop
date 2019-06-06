@@ -20,17 +20,21 @@ Name the first stage `Test (Resource Group)`.
 
 Add the deployment artifacts created during the build. Take note of the **Source Alias**.
 
-Select **Artifacts** > **Add** > **Build** > **terraform-modules-CI** > **Add**
+Select **Artifacts** > **Add** > **Build** > **terraform-modules** > **Add**
 
 ![](../images/deployment-artifacts.jpg)
 
-Select the test stage and then the parent task named `Agent job`.
+Select the test stage to edit the stage tasks.
+
+![](../images/stage-tasks.jpg)
 
 Update the Agent pool to use `Hosted Ubuntu 1604` as the operating system for the build agent.
 
 ![](../images/build-agent.jpg)
 
-Add a `Command Line` task, give it a name of `Terraform Deploy Test`, and copy in the following commands.
+Add a **Command Line** task, give it a name of `Terraform Deploy Test`, and copy in the following commands.
+
+![](../images/command-line.jpg)
 
 Update the first line to include the source alias gather in a previous step.
 
