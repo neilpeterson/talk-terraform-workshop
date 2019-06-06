@@ -32,14 +32,14 @@ Update the Agent pool to use `Hosted Ubuntu 1604` as the operating system for th
 
 ![](../images/build-agent.jpg)
 
-Add a **Command Line** task, give it a name of `Terraform Deploy Test`, and copy in the following commands.
+Add a **Command Line** task, give it a name of `Terraform Deploy Test`.
 
 ![](../images/command-line.jpg)
 
-Update the first line to include the source alias gather in a previous step.
+Copy in the following commands. Update the first line (source-alias) to include the source alias gather in a previous step.
 
 ```
-cd <source alias>/drop/modules/hello-world
+cd source-alias/drop/modules/hello-world
 terraform init
 terraform plan --out plan.out
 terraform apply plan.out
@@ -47,11 +47,11 @@ terraform apply plan.out
 
 Finally, add Azure credentials to the deployment task.
 
-Select **Variables** > **Link Variable Group** > **azure-credentials** > **Link**.
+Select **Variables** > **Variable groups** > **Link Variable Group** > **azure-credentials** > **Link**.
 
 ![](../images/link-variables.jpg)
 
-Click back on **Tasks**. On the **Deploy Terraform Test**, expand **Environment Variables** and add each variable as seen in the following image.
+Click back on **Tasks**. On the **Terraform Deploy Test**, expand **Environment Variables** and add each variable as seen in the following image.
 
 ![](../images/task-variables.jpg)
 
