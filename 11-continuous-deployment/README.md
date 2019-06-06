@@ -18,11 +18,14 @@ Name the first stage `Test (Resource Group)`.
 
 ![](../images/stage-one.jpg)
 
-Add the deployment artifacts created during the build. Take note of the **Source Alias**.
+Add the deployment srtifacts with the **Add** button.
 
-Select **Artifacts** > **Add** > **Build** > **terraform-modules** > **Add**
+![](../images/add-artifacts.jpg)
+
+Seelct the build pipeline, **take note of the source alias**, and click **Add**.
 
 ![](../images/deployment-artifacts.jpg)
+
 
 Select the test stage to edit the stage tasks.
 
