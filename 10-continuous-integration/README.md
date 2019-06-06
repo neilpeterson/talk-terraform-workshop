@@ -2,13 +2,13 @@
 
 ## Module Overview
 
-In this module, you will package up many of the concepts learned throughout the workshop into an automated build and release pipeline. There are a bunch of steps in this module. For the best experience, work along with the workshop instructor in completing each step.
+In this module, you will package up many of the concepts learned throughout the workshop into an automated build pipeline.
 
 ## Create configuration repository
 
 Create a repository of Terraform modules.
 
-Navigate to [https://github.com/neilpeterson/terraform-modules.git](https://github.com/neilpeterson/terraform-modules.git) and fork the repo.
+Navigate to [https://github.com/neilpeterson/terraform-modules.git](https://github.com/neilpeterson/terraform-modules.git) and fork the repository.
 
 ## Create an Azure DevOps instance
 
@@ -52,7 +52,7 @@ Click the **Run** button to kick off the initial build.
 
 ## Add Azure Credentials
 
-In order for you to run Terratest integration test, you will need to provide credentials to the pipeline.
+In order for you to run Terratest integration tests, you will need to provide credentials to the pipeline.
 
 First, use the Azure CLI [az ad sp create-for-rbac](https://docs.microsoft.com/en-us/cli/azure/ad/sp?WT.mc_id=cloudnativeterraform-github-nepeters#az-ad-sp-create-for-rbac) command to create an Azure Service Principal.
 
@@ -68,7 +68,7 @@ $ az ad sp create-for-rbac
 }
 ```
 
-You will also need your Azure subscription id. Use the [az account list](https://docs.microsoft.com/en-us/cli/azure/account?WT.mc_id=cloudnativeterraform-github-nepeters#az-account-list) command to find this value.
+Use the [az account list](https://docs.microsoft.com/en-us/cli/azure/account?WT.mc_id=cloudnativeterraform-github-nepeters#az-account-list) command to find the Azure subscription id.
 
 ```
 $ az account list -o table
@@ -99,4 +99,4 @@ Once completed, assuming everything went well, you should see all tasks as succe
 
 In the next module, you will learn about deploying Terraform configurations with Azure Release pipelines.
 
-Module 11: [Terraform and CNAB](../11-continuous-deployment)
+Module 11: [Continuous Deployment](../11-continuous-deployment)
