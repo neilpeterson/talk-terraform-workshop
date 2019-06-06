@@ -2,19 +2,21 @@
 
 ## Module Overview
 
-In this module, you will package up many of the concepts learned throughout the workshop into an automated build pipeline. The content in this module assumes that you have been working along with the workshop and have allready forked [this repo](https://github.com/neilpeterson/terraform-modules.git).
+In this module, you will create an automated build pipeline that will test your terraform configurations, create a test report, and package up deployable build artifacts.
+
+This module assumes that you have forked [this repository](https://github.com/neilpeterson/terraform-modules) to your personal GitHub account.
 
 ## Create an Azure DevOps instance
 
-If needed, create an Azure DevOps instance. Azure DevOps is free for open source projects, including this workshop.
-
-Navigate to [https://azure.microsoft.com/en-ca/services/devops](https://azure.microsoft.com/en-ca/services/devops/?WT.mc_id=cloudnativeterraform-github-nepeters) and sign up for a free Azure DevOps organization.
+If needed, [create an Azure DevOps instance](https://azure.microsoft.com/en-ca/services/devops/?WT.mc_id=cloudnativeterraform-github-nepeters). Azure DevOps is free for open source projects, including this workshop.
 
 Once you have created the organization, you may be prompted to create a new project.
 
 ![](../images/new-project-small.jpg)
 
 ## Create Build Pipeline
+
+Create a new build pipeline using the left-hand menu.
 
 *Pipelines* > *Build* > *New Pipeline* > *GitHub (YAML)*
 
@@ -24,11 +26,11 @@ Select the GitHub repository that contains the Terraform configurations. You may
 
 ![](../images/select-repo.jpg)
 
-An Azure build pipeline YAML file has been pre-created in the repository. Select *Existing Azure Pipelines YAML file*.
+An Azure build pipeline YAML file has been pre-created in the repository. Select **Existing Azure Pipelines YAML file**.
 
 ![](../images/pipeline-type.jpg)
 
-The pipeline file is named *build-pipeline.yaml*. Enter this value for the path.
+The pipeline file is named `build-pipeline.yaml`. Enter this value for the path.
 
 ![](../images/path.jpg)
 
@@ -38,7 +40,7 @@ At this point, the pipeline should have been imported.
 
 Click the **Run** button to kick off the initial build.
 
-....unfortunately, the build will fail.
+....unfortunately, the build will fail. See the next section for the fix.
 
 ## Add Azure Credentials
 
@@ -76,6 +78,8 @@ Create a variable group named `azure-credentials` and add the following variable
 - **ARM_CLIENT_SECRET**: The service principal password.
 - **ARM_TENANT_ID**: The tenant id which can be found with the service principal information.
 - **ARM_SUBSCRIPTION_ID**: The Azure subscription id.
+
+When done, the variable group should look like this.
 
 ![](../images/variable-group.jpg)
 
