@@ -101,7 +101,7 @@ Click **Save** and **Ok**.
 
 ![](../images/save-two.jpg)
 
-Click **Create Release** and **Create** to start a new release and select the release link to observer status.
+Click **Create Release** and **Create** to start a new release and select the release link to observe the status.
 
 ![](../images/release-two.jpg)
 
@@ -111,7 +111,7 @@ Once the test release has successfully deployed, the production release will nee
 
 When done, you should see both the test and production release in the Azure portal.
 
-![](../images/both-release.jpg)
+![](../images/both-releases.jpg)
 
 ## Extra Credit
 
