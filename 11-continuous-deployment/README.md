@@ -18,11 +18,11 @@ Name the first stage `Test (Resource Group)`.
 
 ![](../images/stage-one.jpg)
 
-Add the deployment srtifacts with the **Add** button.
+Add the deployment artifacts with the **Add** button.
 
 ![](../images/add-artifacts.jpg)
 
-Seelct the build pipeline, **take note of the source alias**, and click **Add**.
+Select the build pipeline, **take note of the source alias** and click **Add**.
 
 ![](../images/deployment-artifacts.jpg)
 
@@ -31,7 +31,7 @@ Select the test stage to edit the stage tasks.
 
 ![](../images/stage-tasks.jpg)
 
-Select **Agent job** and update the **Agent pool** to use `Hosted Ubuntu 1604` as the operating system for the build agent.
+Select **Agent job** and update the **Agent pool** to use `Hosted Ubuntu 1604`.
 
 ![](../images/build-agent.jpg)
 
@@ -41,14 +41,16 @@ Add a **Command Line** task, give it a name of `Terraform Deploy Test`.
 
 Copy in the following commands.
 
-**Update the first line** (source-alias) to include the source alias gather in a previous step.
-
 ```
 cd source-alias/drop/modules/hello-world
 terraform init
 terraform plan --out plan.out
 terraform apply plan.out
 ```
+
+**Update the first line** (source-alias) to include the source alias gather in a previous step.
+
+![](../images/updated-path.jpg)
 
 Finally, add Azure credentials to the deployment task.
 
@@ -60,9 +62,22 @@ Click back on **Tasks**. On the **Terraform Deploy Test**, expand **Environment 
 
 ![](../images/task-variables.jpg)
 
-Click **Save** > **ok** > **Create Release** > and follow the prompts.
+Click **Save** > **ok**.
+
+![](../images/save.jpg)
+
+Now click the **Create release** button > **Create**.
+
+![](../images/new-release.jpg)
+
+And click the **In progress** link to see the deployment progress.
 
 ![](../images/release.jpg)
+
+If everything went according to plan, you should have a successful release.
+
+![](../images/release-good.jpg)
+
 
 ## Create a production stage with approval
 
