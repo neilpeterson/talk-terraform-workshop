@@ -6,12 +6,11 @@ Reusable code or functions are essential in effective coding. This holds true fo
 
 ## Create a Terraform module
 
-Tricks on you, the configuration that we have been building is set up to function as a Terraform module. All Terraform configurations are Terraform modules.
+Tricks on you, the configuration that we have been building is set up to function as a Terraform module. All Terraform configurations are esentially Terraform modules.
 
-To use the hello world configuration as a module, navigate one directory up from where the hello-world configuration is stored. Create a new directory named `hello-world-from-module`.
+To use the hello world configuration as a module, navigate back to the root of terraform-modules directory that you created earlier in this workshop. Create a new directory named `hello-world-from-module`.
 
 ```
-cd ../
 mkdir hello-world-from-module
 cd hello-world-from-module
 ```

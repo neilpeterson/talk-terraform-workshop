@@ -48,7 +48,7 @@ func TestHelloWorld(t *testing.T) {
     // Validate the provisioned application
     http_helper.HttpGetWithCustomValidation(t, query, func(status int, content string) bool {
         return status == 200 &&
-            strings.Contains(content, "Hello")
+            strings.Contains(content, "Welcome")
     })
 }
 ```
@@ -65,7 +65,19 @@ Navigate back to the root of your terraform directory and clone your modules for
 git clone https://github.com/<update>/terraform-modules.git
 ```
 
-Navigate to the tests directory and fetch the Terratest library.
+Navigate to the `modules/hello-world` directory and update the `backend.tf` file with the name of the storage account that you are using for state.
+
+```
+terraform {
+  backend "azurerm" {
+    storage_account_name  = "<update"
+    container_name        = "tstate"
+    key                   = "terraform.tfstate"
+  }
+}
+```
+
+Navigate to the `test` directory and fetch the Terratest library.
 
 ```
 cd terraform-modules/test/

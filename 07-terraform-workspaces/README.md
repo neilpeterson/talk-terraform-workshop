@@ -101,7 +101,7 @@ Taking a look at the backend, we can see the state file for each workspace.
 
 ![](../images/workspace-backend.jpg)
 
-You can also notice, that we now have an instance of the application for each workspace, each in its own Azure resource group.
+Also notice that you now have an instance of the application for each workspace, each in its own Azure resource group.
 
 ```
 $ az group list -o table
