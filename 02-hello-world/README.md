@@ -51,6 +51,6 @@ terraform destroy
 
 ## Next Module
 
-In the next module, you will learn about how to link resources together using String Interpolation. You will also learn about the `terraform plan` command.
+In the next module, you will learn about how to link resources together using Terraform expressions. You will also learn about the `terraform plan` command.
 
-Module 3: [String Interpolation](../03-string-interpolation)
+Module 3: [Terraform Expressions](../03-terraform-expressions)

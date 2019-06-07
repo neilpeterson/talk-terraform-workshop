@@ -6,7 +6,7 @@ If you would like to quickly deploy an application to Azure using Terraform, see
 
 - [1 Introduction to Terraform](./01-intro-to-terraform)
 - [2 Hello World](./02-hello-world)
-- [3 String Interpolation](./03-string-interpolation)
+- [3 Terraform Expressions](./03-terraform-expressions)
 - [4 Input Variables](./04-terraform-variables)
 - [5 Functions](./05-terraform-functions)
 - [6 State](./06-terraform-state)

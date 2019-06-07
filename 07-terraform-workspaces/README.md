@@ -18,12 +18,12 @@ Create a new workspace with the `terraform workspace new` command.
 terraform workspace new test-environment
 ```
 
-Update the `hello-world` app configuration to interpolate the workspace name into the configuration. This can be done with the `${terraform.workspace}` syntax. In this example, the Azure **resource group name** is appended with the workspace name.
+Update the `hello-world` app configuration to insert the workspace name into the configuration. This can be done with the `${terraform.workspace}` syntax. In this example, the Azure **resource group name** is appended with the workspace name.
 
 ```
 resource "azurerm_resource_group" "hello-world" {
   name     = "${var.resource_group}-${terraform.workspace}"
-  location = "${var.location}"
+  location = var.location
 }
 
 resource "random_integer" "ri" {
@@ -32,21 +32,21 @@ resource "random_integer" "ri" {
 }
 
 resource "azurerm_container_group" "hello-world" {
-  name                = "${lower(var.container-name)}"
-  location            = "${azurerm_resource_group.hello-world.location}"
-  resource_group_name = "${azurerm_resource_group.hello-world.name}"
+  name                = lower(var.container-name)
+  location            = azurerm_resource_group.hello-world.location
+  resource_group_name = azurerm_resource_group.hello-world.name
   ip_address_type     = "public"
   dns_name_label      = "${var.dns-prefix}-${random_integer.ri.result}"
   os_type             = "linux"
 
   container {
     name   = "hello-world"
-    image  = "${var.container-image}"
+    image  = var.container-image
     cpu    = "0.5"
     memory = "1.5"
     ports {
-      port      = 80
-      protocol  = "TCP"
+      port     = 80
+      protocol = "TCP"
     }
   }
 }
