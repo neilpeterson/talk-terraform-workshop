@@ -61,16 +61,16 @@ For this workshop, we have pre-created a modules repo with included tests. Go ah
 
 https://github.com/neilpeterson/terraform-modules.git
 
-Navigate back to the root of your terraform directory and clone your modules fork into the directory. Update the following command with the address of your fork.
+Navigate back to the root of your terraform directory and clone your modules fork into the directory. Update the following command with the address of your fork. Once done, change to the test directory.
 
 ```
 git clone https://github.com/<update>/terraform-modules.git
-```
-
-Navigate to the `test` directory and fetch the Terratest library.
-
-```
 cd terraform-modules/test/
+```
+
+Fetch the Terratest Go library.
+
+```
 go get github.com/gruntwork-io/terratest/modules/terraform
 ```
 
