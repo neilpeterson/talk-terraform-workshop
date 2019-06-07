@@ -2,7 +2,9 @@
 
 ## Module Overview
 
-Terraform input variables are used to parameterize Terraform configurations. Output variables are used to return data after a Terraform configuration has been run. In this module, you will update the hello world configuration to consume a set of variabls and to also output the FQDN of the container instance.
+Terraform input variables are used to parameterize Terraform configurations. Output variables are used to return data after a Terraform configuration has been run.
+
+In this module, you will update the hello world configuration to consume a set of variabls and to also output the FQDN of the container instance.
 
 ## Create variables file
 
@@ -12,7 +14,7 @@ Create a new file named `variables.tf`.
 touch variables.tf
 ```
 
-copy in the following configurations. These are input variables are used to pass parameter values into the deployment configuration.
+copy in the following configurations. These input variables are used to pass parameter values into the deployment configuration.
 
 ```
 variable "resource_group" {

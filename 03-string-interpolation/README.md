@@ -21,7 +21,7 @@ We now want to add an Azure Container Instance to the configuration. When doing 
 
 **a.** The container instance must have a globally unique fully qualified domain name.
 
-To solve this, you can use a second Terraform provider named random to generate a random string that can be appended to a base FQDN name. This can be seen around line 6 in the below configuration.
+To solve this, you can use a second Terraform provider named **random** to generate a random string that can be appended to a base FQDN name. This can be seen around line 6 in the below configuration.
 
 **b.** The container instance needs to be created inside of the resource group that is also defined in the configuration.
 

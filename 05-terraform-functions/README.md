@@ -2,7 +2,7 @@
 
 ## Module Overview
 
-Terraform functions allow us to transform, manipulate, and combine strings of text. This is useful for instance when wanting to control the CASING of a resource name. For more information on Terraform functions, see [Built-in Terraform Functiond](https://www.terraform.io/docs/configuration/functions.html).
+Terraform functions allow us to transform, manipulate, and combine strings of text. This is useful for instance when wanting to control the CASING of a resource name.
 
 ## Use the Terraform console
 
@@ -71,8 +71,6 @@ resource "azurerm_container_group" "hello-world" {
   }
 }
 ```
-
-Because we have not updated the providers being used, we do not need to re-initialize the directory.
 
 Create the deployment plan. If you have been following along, the container instance name should have changed from `HelloWorld` to `helloworld` which should be noted in the plan.
 
