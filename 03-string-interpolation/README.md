@@ -2,11 +2,9 @@
 
 ## Module Overview
 
-Terraform string interpolation allows us to embed values such as resource outputs and variables inside of strings. For more information on String Interpolation, see [Terraform Interpolation Syntax](https://www.terraform.io/docs/configuration-0-11/interpolation.html).
+Terraform string interpolation allows you to consume varriables, resource attributes, and data from other data sources within your Terraform configurations.
 
 In this module, you will work with string interpolation. You will also be introduced to the `terraform plan` command.
-
-NOTE: Interpolation Syntax has changed significantly in Terraform Version 0.12.0. To use Terraform 0.12.0, switch to the 0.12.0 version of this workshop.
 
 ## Update configuration to include a Container Instance resource
 
@@ -19,9 +17,12 @@ resource "azurerm_resource_group" "hello-world" {
 }
 ```
 
-We now want to add an Azure Container Instance to the configuration. The trick is that we want the resource created inside of the resource group that is also defined in the configuration. To do so we need the resource group, which can be derived using a process referred to as string interpolation.
+We now want to add an Azure Container Instance to the configuration. When doing so, we have two challenges.
 
-Update the configuration so that it looks like this.
+a. The container instance must have a globally unique fully qualified domain name.
+b. The container instance needs to be created inside of the resource group that is also defined in the configuration.
+
+Replace the contentes of **main.tf** with the following configuration.
 
 ```
 resource "azurerm_resource_group" "hello-world" {
@@ -55,7 +56,11 @@ resource "azurerm_container_group" "hello-world" {
 }
 ```
 
-Notice that a second configuration block is defined for the Azure Container Instances (azurerm_resource_group). Also notice the syntax that makes up the container instance location, resource_group_name, and dns_name_label. The values are derived from the azure_resoure_group using the notation `${azurerm_resource_group.hello-world.name}`.
+To solve a, you can use a second Terraform provider named random to generate a random string that can be appended to a base FQDN name. This can be seen around line 6 in the below configuration.
+
+To solve b, you can use consume the name from the **azure_resource_group** resource, and interpolate the value in the container instance configuration.
+
+Looking at the **azure_container_group** resource, you will see both the random integer `${random_integer.ri.result}` and the resource group `${azurerm_resource_group.hello-world.name}` name being used in the configuration.
 
 ## Apply the configuration
 

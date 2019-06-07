@@ -2,15 +2,15 @@
 
 ## Module Overview
 
-In this module, you will be introduced to basic Terraform configuration syntax. You will also use the `terraform init`, `terrafrom apply`, and `terraform destroy` commands.
+In this module, you will be introduced to basic Terraform configuration syntax. You will also use the `terraform init`, `terraform apply`, and `terraform destroy` commands.
 
 ## Create a simple Terraform configuration
 
-A Terraform configuration is a file or set of files that declare the resource to be created. Terraform configurations are written in Hashicorp Configuration Language (HCL) or JSON. For this workshop, we will work exclusively in HCL. For detailed specs on [HCL](https://www.terraform.io/docs/configuration/index.html).
+A Terraform configuration is a file or set of files that declare the resource to be created. Terraform configurations are written in Hashicorp Configuration Language (HCL) or JSON. For this workshop, you will work exclusively in HCL.
 
-Create a directory named `terraform-moduls` and then a directory under that named `hello-world`. Work inside of the `hello-world` directory until instructed otherwise.
+Create a directory named `terraform-modules` and then a directory under that named `hello-world`. Work inside of the `hello-world` directory until instructed otherwise.
 
-Create a file named `main.tf` and copy in the following configuration. This configuration includes a single resource block that creates an Azure Resource Group.
+Create a file named `main.tf` and copy in the following configuration. This configuration uses the Azure Terraform provider to create an Azure Resource Group.
 
 ```
 resource "azurerm_resource_group" "hello-world" {
@@ -19,13 +19,7 @@ resource "azurerm_resource_group" "hello-world" {
 }
 ```
 
-Log into Azure with the Azure CLI. If you are working in Azure Cloud Shell, this step can be skipped.
-
-```
-az login
-```
-
-Before creating the resource with Terraform, the current working directory must be initialized. The initialization process ensures that the proper Terraform provider plugins, Azure, in this case, have been downloaded.
+Before creating the resource, the current working directory must be initialized. The initialization process ensures that the proper Terraform provider plugins, Azure, in this case, have been downloaded.
 
 Use `terraform init` to initialize the working directory.
 

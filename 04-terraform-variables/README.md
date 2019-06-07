@@ -2,17 +2,17 @@
 
 ## Module Overview
 
-Terraform input variables are used to parameterize Terraform configurations. Learn more about Terraform input variables at the [Terraform Input Variables Documetnation](https://www.terraform.io/docs/configuration/variables.html). Output variables are used to return data after a Terraform configuration has been run. Learn more about Terraform out variables at the [Terraform Output Variables Documetnation](https://www.terraform.io/docs/configuration/outputs.html).
+Terraform input variables are used to parameterize Terraform configurations. Output variables are used to return data after a Terraform configuration has been run. In this module, you will update the hello world configuration to consume a set of variabls and to also output the FQDN of the container instance.
 
 ## Create variables file
 
-Create a new file named `variables.tf`. This file will hold variables and default variable values that can be used in your Terraform configurations. A separate file for variables is optional. Variables can also be defined in the same files as your Terraform configurations.
+Create a new file named `variables.tf`.
 
 ```
 touch variables.tf
 ```
 
-Add these four variables.
+copy in the following configurations. These are input variables are used to pass parameter values into the deployment configuration.
 
 ```
 variable "resource_group" {
@@ -43,8 +43,7 @@ variable "container-name" {
 
 ## Update configuration to use variables
 
-Update the configuration so that it consums each variable. The syntax (pre 0.12.0) is `${var.variable-name}`. For post 0.12.0 syntax, swith to the [0.12.0 version of this workshop](./replace).
-
+Update the configuration so that it consums each variable.
 
 ```
 resource "azurerm_resource_group" "hello-world" {
@@ -77,6 +76,10 @@ resource "azurerm_container_group" "hello-world" {
   }
 }
 ```
+
+Notice that the resource group name, location, and the container instance name and FQDN values are all derived from an input variable.
+
+## Output Variables
 
 Output variables can be used to output calculated values to the terminal and also for passing data between Terraform modules. We will discuss modules later on in this workshop.
 
