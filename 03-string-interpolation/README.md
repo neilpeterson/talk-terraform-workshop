@@ -19,8 +19,13 @@ resource "azurerm_resource_group" "hello-world" {
 
 We now want to add an Azure Container Instance to the configuration. When doing so, we have two challenges.
 
-  a. The container instance must have a globally unique fully qualified domain name.
-  b. The container instance needs to be created inside of the resource group that is also defined in the configuration.
+a. The container instance must have a globally unique fully qualified domain name.
+
+To solve this, you can use a second Terraform provider named random to generate a random string that can be appended to a base FQDN name. This can be seen around line 6 in the below configuration.
+
+b. The container instance needs to be created inside of the resource group that is also defined in the configuration.
+
+To solve this, you can use consume the name from the **azure_resource_group** resource, and interpolate the value in the container instance configuration.
 
 Replace the contentes of **main.tf** with the following configuration.
 
@@ -55,12 +60,6 @@ resource "azurerm_container_group" "hello-world" {
   }
 }
 ```
-
-To solve a, you can use a second Terraform provider named random to generate a random string that can be appended to a base FQDN name. This can be seen around line 6 in the below configuration.
-
-To solve b, you can use consume the name from the **azure_resource_group** resource, and interpolate the value in the container instance configuration.
-
-Looking at the **azure_container_group** resource, you will see both the random integer `${random_integer.ri.result}` and the resource group `${azurerm_resource_group.hello-world.name}` name being used in the configuration.
 
 ## Apply the configuration
 
