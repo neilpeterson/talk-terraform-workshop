@@ -83,7 +83,9 @@ When done, the variable group should look like this.
 
 ![](../images/variable-group.jpg)
 
-Click on the **Save**, navigate back to the pipeline, and click the **queue** button to start a new build. Select the build to see the progress.
+Click on the **Save**, navigate back to the pipeline, and click the **queue** button to start a new build.
+
+Select the build to see the progress.
 
 ![](../images/build.jpg)
 

@@ -22,10 +22,9 @@ Add the deployment artifacts with the **Add** button.
 
 ![](../images/add-artifacts.jpg)
 
-Select the build pipeline, **take note of the source alias** and click **Add**.
+Select the build pipeline, **take note of the source alias**, and click **Add**.
 
 ![](../images/deployment-artifacts.jpg)
-
 
 Select the test stage to edit the stage tasks.
 
@@ -66,7 +65,7 @@ Click **Save** > **ok**.
 
 ![](../images/save.jpg)
 
-Now click the **Create release** button > **Create**.
+Click the **Create release** button > **Create** > Select the release.
 
 ![](../images/new-release.jpg)
 
@@ -81,7 +80,7 @@ If everything went according to plan, you should have a successful release.
 
 ## Create a production stage with approval
 
-Return to the release pipeline and clone the test stage.
+Return to the release pipeline, click **Edit**, and clone the test stage.
 
 ![](../images/clone.jpg)
 
