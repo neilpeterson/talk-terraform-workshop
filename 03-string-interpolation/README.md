@@ -19,8 +19,8 @@ resource "azurerm_resource_group" "hello-world" {
 
 We now want to add an Azure Container Instance to the configuration. When doing so, we have two challenges.
 
-- a. The container instance must have a globally unique fully qualified domain name.
-- b. The container instance needs to be created inside of the resource group that is also defined in the configuration.
+  a. The container instance must have a globally unique fully qualified domain name.
+  b. The container instance needs to be created inside of the resource group that is also defined in the configuration.
 
 Replace the contentes of **main.tf** with the following configuration.
 
