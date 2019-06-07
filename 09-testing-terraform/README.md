@@ -2,7 +2,9 @@
 
 ## Module Overview
 
-Just like with application code, the ability to test infrastructure code before committing to production enables effective continuous deployment. Unlike with application code, performing unit tests on infrastructure code is not simple. Integration testing, however, can be achieved using your own automation or one of many available packages. In this module, you will perform an integration test on the hello world application using a well know package named Terratest. For more information on Terratest, see the [GitHub project](https://github.com/gruntwork-io/terratest).
+Just like with application code, the ability to test infrastructure code before committing to production enables effective continuous deployment. Unlike with application code, performing unit tests on infrastructure code is not simple. Integration testing, however, can be achieved using your own automation or one of many available packages.
+
+In this module, you will perform an integration test on the hello world application using a well know package named Terratest. For more information on Terratest, see the [GitHub project](https://github.com/gruntwork-io/terratest).
 
 ## Terraform Tests with Terratest
 
