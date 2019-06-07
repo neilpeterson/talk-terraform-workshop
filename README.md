@@ -6,7 +6,7 @@ If you would like to quickly deploy an application to Azure using Terraform, see
 
 Welcome to this Terraform on Azure workshop. This version of the workshop is intended to be led by an instructor. As such, you may find some of the content missing technical details. These details will be provided by the instructor.
 
-That said, we are in the process of creating a self-guided/self-paced version of this workshop and will add the location of that workshop here once completed.
+We are in the process of creating a self-guided/self-paced version of this workshop and will add the location of that workshop here once completed.
 
 ## Azure Trial
 
@@ -16,11 +16,11 @@ To set up our Azure trial subscription, visit [Microsoft Azure Passes](https://w
 
 When prompted enter the provided trial code and complete the remainder of the form.
 
-![](../images/promo-code.jpg)
+![](./images/promo-code.jpg)
 
 An Azure subscription will be provisioned for you. Once completed, you will be given access to the Azure Portal.
 
-![](../images/portal.jpg)
+![](./images/portal.jpg)
 
 ## Workshop Modules
 
