@@ -1,10 +1,12 @@
-# String Interpolation
+# Terraform Expression Syntax
 
 ## Module Overview
 
-Terraform string interpolation allows you to consume varriables, resource attributes, and data from other data sources within your Terraform configurations.
+Terraform expressions allows you to consume varriables, resource attributes, and data from other data sources within your Terraform configurations.
 
-In this module, you will work with string interpolation. You will also be introduced to the `terraform plan` command.
+In this module, you will work with expressions. You will also be introduced to the `terraform plan` command.
+
+Expressions are a new concept in Terraform 0.12.0, see the [Expressions documentation](https://www.terraform.io/docs/configuration/expressions.html) for full details.
 
 ## Update configuration to include a Container Instance resource
 
@@ -25,7 +27,7 @@ To solve this, you can use a second Terraform provider named **random** to gener
 
 **b.** The container instance needs to be created inside of the resource group that is also defined in the configuration.
 
-To solve this, you can use consume the name from the **azure_resource_group** resource, and interpolate the value in the container instance configuration.
+To solve this, you can use consume the name from the **azure_resource_group** resource, and insert the value in the container instance configuration.
 
 Replace the contentes of **main.tf** with the following configuration.
 
@@ -42,8 +44,8 @@ resource "random_integer" "ri" {
 
 resource "azurerm_container_group" "hello-world" {
   name                = "hello-world"
-  location            = "${azurerm_resource_group.hello-world.location}"
-  resource_group_name = "${azurerm_resource_group.hello-world.name}"
+  location            = azurerm_resource_group.hello-world.location
+  resource_group_name = azurerm_resource_group.hello-world.name
   ip_address_type     = "public"
   dns_name_label      = "${azurerm_resource_group.hello-world.name}-${random_integer.ri.result}"
   os_type             = "linux"
@@ -54,8 +56,8 @@ resource "azurerm_container_group" "hello-world" {
     cpu    = "0.5"
     memory = "1.5"
     ports {
-      port      = 80
-      protocol  = "TCP"
+      port     = 80
+      protocol = "TCP"
     }
   }
 }
@@ -84,7 +86,7 @@ terraform apply plan.out
 You can validate that the container has been created using the Azure CLI `az contaier list` command.
 
 ```
-az container list -o table
+$ az container list -o table
 
 Name         ResourceGroup    Status     Image                     IP:ports          Network    CPU/Memory       OsType    Location
 -----------  ---------------  ---------  ------------------------  ----------------  ---------  ---------------  --------  ----------

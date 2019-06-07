@@ -42,8 +42,8 @@ Open the `main.tf` file created in the last module and update the name of the Az
 
 ```
 resource "azurerm_resource_group" "hello-world" {
-  name     = "${var.resource_group}"
-  location = "${var.location}"
+  name     = var.resource_group
+  location = var.location
 }
 
 resource "random_integer" "ri" {
@@ -52,16 +52,16 @@ resource "random_integer" "ri" {
 }
 
 resource "azurerm_container_group" "hello-world" {
-  name                = "${lower(var.container-name)}"
-  location            = "${azurerm_resource_group.hello-world.location}"
-  resource_group_name = "${azurerm_resource_group.hello-world.name}"
+  name                = lower(var.container-name)
+  location            = azurerm_resource_group.hello-world.location
+  resource_group_name = azurerm_resource_group.hello-world.name
   ip_address_type     = "public"
   dns_name_label      = "${var.dns-prefix}-${random_integer.ri.result}"
   os_type             = "linux"
 
   container {
     name   = "hello-world"
-    image  = "${var.container-image}"
+    image  = var.container-image
     cpu    = "0.5"
     memory = "1.5"
     ports {
@@ -77,28 +77,46 @@ Create the deployment plan. If you have been following along, the container inst
 ```
 $ terraform plan --out plan.out
 
--/+ azurerm_container_group.hello-world (new resource required)
-      id:                     "/subscriptions/3762d87c-ddb8-425f-b2fc-29e5e859edaf/resourceGroups/hello-world/providers/Microsoft.ContainerInstance/containerGroups/HelloWorld" => <computed> (forces new resource)
-      container.#:            "1" => "1"
-      container.0.command:    "" => <computed>
-      container.0.commands.#: "0" => <computed>
-      container.0.cpu:        "0.5" => "0.5"
-      container.0.image:      "microsoft/aci-helloworld" => "microsoft/aci-helloworld"
-      container.0.memory:     "1.5" => "1.5"
-      container.0.name:       "hello-world" => "hello-world"
-      container.0.port:       "80" => "80"
-      container.0.ports.#:    "1" => <computed>
-      dns_name_label:         "hello-world" => "hello-world"
-      fqdn:                   "hello-world.eastus.azurecontainer.io" => <computed>
-      identity.#:             "0" => <computed>
-      ip_address:             "52.224.145.193" => <computed>
-      ip_address_type:        "Public" => "public"
-      location:               "eastus" => "eastus"
-      name:                   "HelloWorld" => "helloworld" (forces new resource)
-      os_type:                "Linux" => "linux"
-      resource_group_name:    "hello-world" => "hello-world"
-      restart_policy:         "Always" => "Always"
-      tags.%:                 "0" => <computed>
+# azurerm_container_group.hello-world must be replaced
+-/+ resource "azurerm_container_group" "hello-world" {
+        dns_name_label      = "hello-world-71849"
+      ~ fqdn                = "hello-world-71849.eastus.azurecontainer.io" -> (known after apply)
+      ~ id                  = "/subscriptions/3762d87c-ddb8-425f-b2fc-29e5e859edaf/resourceGroups/hello-world/providers/Microsoft.ContainerInstance/containerGroups/HelloWorld" -> (known after apply)
+      ~ ip_address          = "52.224.150.48" -> (known after apply)
+      ~ ip_address_type     = "Public" -> "public"
+        location            = "eastus"
+      ~ name                = "HelloWorld" -> "helloworld" # forces replacement
+      ~ os_type             = "Linux" -> "linux"
+        resource_group_name = "hello-world"
+        restart_policy      = "Always"
+      ~ tags                = {} -> (known after apply)
+
+      ~ container {
+          + command                      = (known after apply)
+          ~ commands                     = [] -> (known after apply)
+            cpu                          = 0.5
+          - environment_variables        = {} -> null
+            image                        = "microsoft/aci-helloworld"
+            memory                       = 1.5
+            name                         = "hello-world"
+          ~ port                         = 80 -> (known after apply)
+          ~ protocol                     = "TCP" -> (known after apply)
+          - secure_environment_variables = (sensitive value)
+
+            ports {
+                port     = 80
+                protocol = "TCP"
+            }
+        }
+
+      + identity {
+          + identity_ids = (known after apply)
+          + principal_id = (known after apply)
+          + type         = (known after apply)
+        }
+    }
+
+Plan: 1 to add, 0 to change, 1 to destroy.
 ```
 
 Use `terraform apply plan.out` to apply the plan.
