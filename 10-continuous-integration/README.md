@@ -105,7 +105,7 @@ Because continuous integration is configured, the commit will automatically star
 
 The terratest will fail this time, resulting in a failure report, which can be seen on the test tab of the build.
 
-![](../images/failed-test.jpg)
+![](../images/failed-tests.jpg)
 
 Change the Terratest file back validating the `Welcome` sting.
 
