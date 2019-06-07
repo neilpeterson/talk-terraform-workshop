@@ -8,7 +8,7 @@ In this module, you will write your first Terrafrorm configuration. A Terraform 
 
 Create a directory named `terraform-modules` and then a directory under that named `hello-world`.
 
-Create a file named `main.tf` inside of the `hello-world` directory, and copy in the following configuration. This configuration uses the Azure Terraform provider to create an Azure Resource Group.
+Create a file named `main.tf` inside of the `hello-world` directory, and copy in the following configuration.
 
 ```
 resource "azurerm_resource_group" "hello-world" {
@@ -16,6 +16,8 @@ resource "azurerm_resource_group" "hello-world" {
   location = "eastus"
 }
 ```
+
+This configuration uses the Azure provider to create an Azure Resource Group.
 
 Before creating the resource, the `hello-world` directory must be initialized. The initialization process ensures that the proper Terraform provider plugins, Azure, in this case, have been downloaded.
 
