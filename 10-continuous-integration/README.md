@@ -93,6 +93,24 @@ Once completed, assuming everything went well, you should see all tasks as succe
 
 ![](../images/build-complete.jpg)
 
+## Produce Failed Test
+
+Update the test file so that the validation text is `Hello`. Commit the change to the master branch of the GitHub repository.
+
+![](../images/test.jpg)
+
+Because continuous integration is configured, the commit will automatically start a new build.
+
+![](../images/new-build.jpg)
+
+The terratest will fail this time, resulting in a failure report, which can be seen on the test tab of the build.
+
+![](../images/failed-test.jpg)
+
+Change the Terratest file back validating the `Welcome` sting.
+
+![](../images/welcome.jpg)
+
 ## Next Module
 
 In the next module, you will learn about deploying Terraform configurations with Azure Release pipelines.

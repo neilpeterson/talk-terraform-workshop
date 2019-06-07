@@ -6,7 +6,7 @@ In this module, you will write your first Terrafrorm configuration. A Terraform 
 
 ## Create a simple Terraform configuration
 
-Create a directory named `terraform-modules` and then a directory under that named `hello-world`.
+Create a directory named `terraform` and then a directory under that named `hello-world`.
 
 Create a file named `main.tf` inside of the `hello-world` directory, and copy in the following configuration.
 
