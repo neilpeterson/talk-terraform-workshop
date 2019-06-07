@@ -1,18 +1,18 @@
 ## Quick intro to Terraform on Azure
 
-If you would like to quickly deploy an application to Azure using Terraform, see the [Azure Terraform Quickstart](https://docs.microsoft.com/en-us/azure/terraform/terrafom-quickstart?WT.mc_id=cloudnativeterraform-github-nepeters).
+If you are just looking for a quick introduction to Terraform on Azure, see the [Azure Terraform Quickstart](https://docs.microsoft.com/en-us/azure/terraform/terrafom-quickstart?WT.mc_id=cloudnativeterraform-github-nepeters).
 
 ## This workshop
 
 Welcome to this Terraform on Azure workshop. This version of the workshop is intended to be led by an instructor. As such, you may find some of the content missing technical details. These details will be provided by the instructor.
 
-We are in the process of creating a self-guided/self-paced version of this workshop and will add the location of that workshop here once completed.
+We are in the process of creating a self-guided/self-paced version of this workshop and will add the location of that workshop once completed.
 
 ## Azure Trial
 
 For those attending this workshop in person, a free Azure trail (no card needed) will be provided.
 
-To set up our Azure trial subscription, visit [Microsoft Azure Passes](https://www.microsoftazurepass.com?WT.mc_id=cloudnativeterraform-github-nepeters).
+To set up your Azure trial subscription, visit [Microsoft Azure Passes](https://www.microsoftazurepass.com?WT.mc_id=cloudnativeterraform-github-nepeters).
 
 When prompted enter the provided trial code and complete the remainder of the form.
 
