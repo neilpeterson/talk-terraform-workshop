@@ -15,4 +15,3 @@ If you would like to quickly deploy an application to Azure using Terraform, see
 - [9 Testing](./09-testing-terraform)
 - [10 Continuous Integration](./10-continuous-integration)
 - [11 Continuous Deployment](./11-continuous-deployment)
-- [12 Cloud Native Applicaton Bundles](./12-terraform-cnab)

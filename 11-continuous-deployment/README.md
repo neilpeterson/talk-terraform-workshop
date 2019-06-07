@@ -116,9 +116,3 @@ When done, you should see both the test and production release in the Azure port
 ## Extra Credit
 
 These Azure Pipeline examples have not included remote state. As an additional challenge, see if you can insert the logic to store both the test and production state in an Azure backend.
-
-## Next Module
-
-In the next module, you will learn about deploying Terraform with Cloud Native Application Bundles.
-
-Module 12: [Terraform and CNAB](../12-terraform-cnab)
