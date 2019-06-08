@@ -48,14 +48,9 @@ resource "azurerm_container_group" "hello-world" {
 
 Notice two things about the configuration.
 
-**a.** The container instance needs to be created inside of the resource group.
+**a.** The container instance needs to be created inside of the resource group. To solve this, an expression is used to interpolate the resource group names into the container
 
-To solve this, an expression is used to interpolate the resource group names into the container
-
-**b.** The container instance must have a globally unique fully qualified domain name.
-
-This is solved using a second Terraform provider named **random** to generate a random string that can be appended to a base FQDN name.
-
+**b.** The container instance must have a globally unique fully qualified domain name. This is solved using a second Terraform provider named **random** to generate a random string that can be appended to a base FQDN name.
 
 ## Apply the configuration
 
