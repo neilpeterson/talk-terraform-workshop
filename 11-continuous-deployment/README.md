@@ -55,8 +55,8 @@ Select **Variables** > **Variable groups** > **Link Variable Group** > **azure-c
 
 Click back on **Tasks**. On the **Terraform Deploy Test**, expand **Environment Variables** and add the following variables and values. Encrypt each with the lock
 
-| Variable Name | Value |
-|---|---|
+| Name | Value |
+|:---|:---|
 | ARM_CLIENT_ID | $(ARM_CLIENT_ID) |
 | ARM_CLIENT_SECRET | $(ARM_CLIENT_SECRET) |
 | ARM_TENANT_ID | $(ARM_TENANT_ID) |
