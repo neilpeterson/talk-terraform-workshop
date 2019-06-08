@@ -97,7 +97,7 @@ $ terraform workspace list
   test-environment
 ```
 
-Taking a look at the backend, we can see the state file for each workspace.
+Taking a look at the backend, you should see the state file for each workspace.
 
 ![](../images/workspace-backend.jpg)
 

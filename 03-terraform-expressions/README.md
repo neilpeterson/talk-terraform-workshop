@@ -10,24 +10,7 @@ Expressions are a new concept in Terraform 0.12.0, see the [Expressions document
 
 ## Update configuration to include a Container Instance resource
 
-Open the previously created configuration found in the `main.tf` file. The contents should match the following. If needed, recreate the file.
-
-```
-resource "azurerm_resource_group" "hello-world" {
-  name     = "hello-world"
-  location = "eastus"
-}
-```
-
-We now want to add an Azure Container Instance to the configuration. When doing so, we have two challenges.
-
-**a.** The container instance must have a globally unique fully qualified domain name.
-
-To solve this, you can use a second Terraform provider named **random** to generate a random string that can be appended to a base FQDN name. This can be seen around line 6 in the below configuration.
-
-**b.** The container instance needs to be created inside of the resource group that is also defined in the configuration.
-
-To solve this, you can use consume the name from the **azure_resource_group** resource, and insert the value in the container instance configuration.
+Open the previously created configuration found in the `main.tf` file and add a new resource (Azure Container Instance) to the configuration.
 
 Replace the contentes of **main.tf** with the following configuration.
 
@@ -62,6 +45,17 @@ resource "azurerm_container_group" "hello-world" {
   }
 }
 ```
+
+Notice two things about the configuration.
+
+**a.** The container instance needs to be created inside of the resource group.
+
+To solve this, an expression is used to interpolate the resource group names into the container
+
+**b.** The container instance must have a globally unique fully qualified domain name.
+
+This is solved using a second Terraform provider named **random** to generate a random string that can be appended to a base FQDN name.
+
 
 ## Apply the configuration
 

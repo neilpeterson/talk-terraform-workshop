@@ -6,7 +6,7 @@ In this module you will create an Azure release pipeline that will deploy the co
 
 ## Create Release Pipeline
 
-Create a new release pipeline. YAML based release pipelines are in preview and do not yet support manual approvals. We will work with classic pipelines for this workshop.
+Create a new release pipeline. YAML based release pipelines are in preview and do not yet support manual approvals. You will work with classic pipelines for this workshop.
 
 **Pipelines** > **Release** > **New Pipeline**
 
