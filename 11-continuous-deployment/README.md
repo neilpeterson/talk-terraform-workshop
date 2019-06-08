@@ -22,7 +22,7 @@ Add the deployment artifacts with the **Add** button.
 
 ![](../images/add-artifacts.jpg)
 
-Select the build pipeline, **take note of the source alias**, and click **Add**.
+Select the build pipeline and click **Add**.
 
 ![](../images/deployment-artifacts.jpg)
 
@@ -41,15 +41,11 @@ Add a **Command Line** task, give it a name of `Terraform Deploy Test`.
 Copy in the following commands.
 
 ```
-cd source-alias/drop/modules/hello-world
+cd $(Release.PrimaryArtifactSourceAlias)/drop/modules/hello-world
 terraform init
 terraform plan --out plan.out -var resource_group=hello-world-test-environment -var dns-prefix=hello-world-test-environment
 terraform apply plan.out
 ```
-
-**Update the first line** (source-alias) to include the source alias gather in a previous step.
-
-![](../images/updated-path.jpg)
 
 Finally, add Azure credentials to the deployment task.
 
