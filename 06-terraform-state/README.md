@@ -13,7 +13,14 @@ In this module, you will create a backend state store in an Azure Storage accoun
 
 ## Create Azure Storage Account
 
-Create a file named `storage.sh` and copy in the following script.
+Create a file named `storage.sh`.
+
+```
+touch storage.sh
+```
+
+Copy in the following script.
+
 
 ```
 #!/bin/bash

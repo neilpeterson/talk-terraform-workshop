@@ -8,7 +8,18 @@ In this module, you will write your first Terrafrorm configuration. A Terraform 
 
 Create a directory named `terraform` and then a directory under that named `hello-world`.
 
-Create a file named `main.tf` inside of the `hello-world` directory, and copy in the following configuration.
+```
+mkdir -p terraform/hello-world
+cd terraform/hello-world
+```
+
+Create a file named `main.tf`.
+
+```
+touch main.tf
+```
+
+Copy in the following Terraform configuration.
 
 ```
 resource "azurerm_resource_group" "hello-world" {

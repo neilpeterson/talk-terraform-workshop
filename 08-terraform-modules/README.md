@@ -2,7 +2,9 @@
 
 ## Module Overview
 
-Reusable code or functions are essential in effective coding. This holds true for infrastructure code as well. With Terraform we can package up a configuration into configuration modules for re-use. In this module, you will see how to re-use the hello world application as a Terraform module. For more information on Terraform module, see the [Terrform modules documentation](https://www.terraform.io/docs/configuration/modules.html).
+Reusable code or functions are essential in effective coding. This holds true for infrastructure code as well. With Terraform we can package up a configuration into configuration modules for re-use.
+
+In this module, you will see how to re-use the hello world configuration as a Terraform module.
 
 ## Create a Terraform module
 
@@ -15,7 +17,15 @@ mkdir hello-world-from-module
 cd hello-world-from-module
 ```
 
-Create a file name `main.tf` and add the following configuration. Notice here that instead of defining things like the container image, memory and cpu requests, and IP addressing configuration, we are only providing the location of the module, a resource group name, and a dns prefix. These values will be passed as input variables to the hello world configuration.
+Create a file named `main.tf`.
+
+```
+touch main.tf
+```
+
+Copy in the following configuration.
+
+Notice here that instead of defining things like the container image, memory and cpu requests, and IP addressing configuration, we are only providing the location of the module, a resource group name, and a dns prefix. These values will be passed as input variables to the hello world configuration.
 
 ```
 module "hello-world" {
