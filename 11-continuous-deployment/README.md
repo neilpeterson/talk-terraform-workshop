@@ -14,7 +14,7 @@ Start with an empty job pipeline template.
 
 ![](../images/empty-job.jpg)
 
-Name the first stage `Test (Resource Group)`.
+Name the stage `Test`.
 
 ![](../images/stage-one.jpg)
 
@@ -26,7 +26,7 @@ Select the build pipeline and click **Add**.
 
 ![](../images/deployment-artifacts.jpg)
 
-Select the test stage to edit the stage tasks.
+Select the stage to edit the stage tasks.
 
 ![](../images/stage-tasks.jpg)
 
@@ -34,16 +34,18 @@ Select **Agent job** and update the **Agent pool** to use `Hosted Ubuntu 1604`.
 
 ![](../images/build-agent.jpg)
 
-Add a **Command Line** task, give it a name of `Terraform Deploy Test`.
+Add a **Command Line** task, give it a name of `Deploy Hello World`.
 
 ![](../images/command-line.jpg)
 
 Copy in the following commands.
 
 ```
+RELEASE=Hello-World-$(Release.EnvironmentName)
+
 cd $(Release.PrimaryArtifactSourceAlias)/drop/modules/hello-world
 terraform init
-terraform plan --out plan.out -var resource_group=hello-world-test-environment -var dns-prefix=hello-world-test-environment
+terraform plan --out plan.out -var resource_group=$RELEASE -var dns-prefix=$RELEASE
 terraform apply plan.out
 ```
 
@@ -89,7 +91,7 @@ Return to the release pipeline, click **Edit**, and clone the test stage.
 
 ![](../images/clone.jpg)
 
-Update the stage and task name so that they indicate a production deployment.
+Name the new stage `Production` and click save.
 
 ![](../images/production.jpg)
 
@@ -117,6 +119,6 @@ When done, you should see both the test and production release in the Azure port
 
 ![](../images/both-releases.jpg)
 
-## Extra Credit
+## Bonus
 
 These Azure Pipeline examples have not included remote state. As an additional challenge, see if you can insert the logic to store both the test and production state in an Azure backend.
