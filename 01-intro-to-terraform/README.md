@@ -1,10 +1,10 @@
 # Workshop Introduction
 
-## Infrastructure as Code
+## Infrastructure as Code (IaC)
 
-Deployment of application infrastructure using code based assets.
+Deployment of application infrastructure (and apps) using code based assets.
 
-Potential options:
+Some potential options for IaC:
 
 - Scripts, SDKs, and managed code
 - Provider-specific tooling
@@ -15,17 +15,19 @@ Benefits:
 - Agility
 - Control
 - Documentation
-- Version controlled
+- Idempotency
+- Version control
 - Validation
 - Reuse
-- Continious / Cloud Native
+- Continuous
 
 ## Terraform
 
-Open Sourced, cross-platform, and relatively mature option for IaC.
+Open Sourced, cross-platform, and somewhat mature option for IaC.
 
-- Runtime is built in Go
-- Providers (also built in Go) bring cloud / service specific functionality
+- Clean, simple language (Hashicorp Configuration Language, HCL2)
+- Extensible  through Terraform providers (multi-cloud, cross prem)
+- Runtime and providers built in Go
 - Terraform Configuration are the deployable piece
 - Multiple tools for testing and continuous integration / delivery
 
