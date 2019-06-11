@@ -13,6 +13,7 @@ We are in the process of creating a self-guided/self-paced version of this works
 ## Contacts
 
 [@nepeters](https://twitter.com/nepeters)
+
 [@wiredcanuck](https://twitter.com/wiredcanuck)
 
 ## Azure Trial
