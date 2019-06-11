@@ -68,7 +68,13 @@ export ARM_ACCESS_KEY=<access_key>
 
 ## Create Terraform Backend
 
-Create a file names `backend.tf` and copy in the following configuration. Update the storage account name to match what was created in the last step.
+Create a file names `backend.tf`.
+
+```
+touch backend.tf
+```
+
+Copy in the following configuration. Update the storage account name to match what was created with the script.
 
 ```
 terraform {

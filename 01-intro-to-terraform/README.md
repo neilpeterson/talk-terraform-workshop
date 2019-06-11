@@ -27,8 +27,8 @@ Open Sourced, cross-platform, and somewhat mature option for IaC.
 
 - Clean, simple language (Hashicorp Configuration Language, HCL2)
 - Extensible  through Terraform providers (multi-cloud, cross prem)
-- Runtime and providers built in Go
-- Terraform Configuration are the deployable piece
+- Runtime and providers built-in Go
+- Terraform Configuration is the deployable piece
 - Multiple tools for testing and continuous integration / delivery
 
 ## Next Module

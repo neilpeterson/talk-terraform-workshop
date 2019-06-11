@@ -4,7 +4,7 @@
 
 Terraform input variables are used to parameterize Terraform configurations. Output variables are used to return data after a Terraform configuration has been run.
 
-In this module, you will update the hello world configuration to consume a set of variabls and to also output the FQDN of the container instance.
+In this module, you will update the hello world configuration to consume a set of variables and to also output the FQDN of the container instance.
 
 ## Create variables file
 
@@ -45,7 +45,7 @@ variable "container-name" {
 
 ## Update configuration to use variables
 
-Update the configuration so that it consums each variable.
+Update the configuration so that it consumes each variable.
 
 ```
 resource "azurerm_resource_group" "hello-world" {

@@ -2,7 +2,7 @@
 
 ## Module Overview
 
-In this module, you will write your first Terrafrorm configuration. A Terraform configuration is a file or set of files that declare infrastructure resource to be created. Terraform configurations are written in Hashicorp Configuration Language (HCL) or JSON. For this workshop, you will work exclusively in HCL.
+In this module, you will write your first Terraform configuration. A Terraform configuration is a file or set of files that declare infrastructure resource to be created. Terraform configurations are written in Hashicorp Configuration Language (HCL) or JSON. For this workshop, you will work exclusively in HCL.
 
 ## Create a simple Terraform configuration
 

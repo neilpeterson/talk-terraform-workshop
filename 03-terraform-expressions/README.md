@@ -2,7 +2,7 @@
 
 ## Module Overview
 
-Terraform expressions allows you to consume varriables, resource attributes, and data from other data sources within your Terraform configurations.
+Terraform expressions allows you to consume variables, resource attributes, and data from other data sources within your Terraform configurations.
 
 In this module, you will work with expressions. You will also be introduced to the `terraform plan` command.
 
@@ -12,7 +12,7 @@ Expressions are a new concept in Terraform 0.12.0, see the [Expressions document
 
 Open the previously created configuration found in the `main.tf` file and add a new resource (Azure Container Instance) to the configuration.
 
-Replace the contentes of **main.tf** with the following configuration.
+Replace the contents of **main.tf** with the following configuration.
 
 ```
 resource "azurerm_resource_group" "hello-world" {
@@ -72,7 +72,7 @@ Use `terraform apply plan.out` to apply the plan.
 terraform apply plan.out
 ```
 
-You can validate that the container has been created using the Azure CLI `az contaier list` command.
+You can validate that the container has been created using the Azure CLI `az container list` command.
 
 ```
 $ az container list -o table

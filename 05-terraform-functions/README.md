@@ -72,11 +72,15 @@ resource "azurerm_container_group" "hello-world" {
 }
 ```
 
-Create the deployment plan. If you have been following along, the container instance name should have changed from `HelloWorld` to `helloworld` which should be noted in the plan.
+Create the deployment plan.
 
 ```
-$ terraform plan --out plan.out
+terraform plan --out plan.out
+```
 
+If you have been following along, the container instance name should have changed from `HelloWorld` to `helloworld` which should be noted in the plan (output below).
+
+```
 # azurerm_container_group.hello-world must be replaced
 -/+ resource "azurerm_container_group" "hello-world" {
         dns_name_label      = "hello-world-71849"
