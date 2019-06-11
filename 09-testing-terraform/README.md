@@ -10,7 +10,7 @@ In this module, you will perform an integration test on the hello world applicat
 
 Terratest is a go library, and such all tests are written in go lang. The workshop instructor will walk through the following sample.
 
-```
+```go
 package test
 
 import (
@@ -63,20 +63,20 @@ https://github.com/neilpeterson/terraform-modules.git
 
 Navigate back to the root of your terraform directory and clone your modules fork into the directory. Update the following command with the address of your fork. Once done, change to the test directory.
 
-```
+```bash
 git clone https://github.com/<update>/terraform-modules.git
 cd terraform-modules/test/
 ```
 
 Fetch the Terratest Go library.
 
-```
+```bash
 go get github.com/gruntwork-io/terratest/modules/terraform
 ```
 
 Now run all of the tests, which in this example is only one.
 
-```
+```bash
 go test
 ```
 
@@ -84,7 +84,7 @@ This test will create the hello world application, validate that not only an HTT
 
 Once the test has completed, you should see output similar to the following.
 
-```
+```bash
 PASS
 ok      _/home/neil/clouddrive/terraform-modules/test   148.223s
 ```

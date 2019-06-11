@@ -15,14 +15,14 @@ In this module, you will create a backend state store in an Azure Storage accoun
 
 Create a file named `storage.sh`.
 
-```
+```bash
 touch storage.sh
 ```
 
 Copy in the following script.
 
 
-```
+```bash
 #!/bin/bash
 
 RESOURCE_GROUP_NAME=tstate
@@ -48,13 +48,13 @@ echo "access_key: $ACCOUNT_KEY"
 
 Run the script. and take note of the storage account name and access key which can be seen as output once the script has completed.
 
-```
+```bash
 sh storage.sh
 ```
 
 Once the script has completed, it will output the storage account name and access key. Take note of these values.
 
-```
+```terraform
 storage_account_name: tstate653
 container_name: tstate
 access_key: 2A00000bKxAvWbc3Hy000000000000aMdVvSW13000000000000Trj4YE6RBR000000000000zg6ktNsNluKxg==
@@ -62,7 +62,7 @@ access_key: 2A00000bKxAvWbc3Hy000000000000aMdVvSW13000000000000Trj4YE6RBR0000000
 
 Store the access key in an environment variable named `ARM_ACCESS_KEY`.
 
-```
+```bash
 export ARM_ACCESS_KEY=<access_key>
 ```
 
@@ -70,13 +70,13 @@ export ARM_ACCESS_KEY=<access_key>
 
 Create a file names `backend.tf`.
 
-```
+```bash
 touch backend.tf
 ```
 
 Copy in the following configuration. Update the storage account name to match what was created with the script.
 
-```
+```terraform
 terraform {
   backend "azurerm" {
     storage_account_name  = "<replace>"
@@ -88,7 +88,7 @@ terraform {
 
 Reinitialize the directory. Terraform will recognize the new backend configuration and prompt you to copy the existing state to the backend.
 
-```
+```bash
 terraform init
 ```
 
@@ -99,7 +99,7 @@ At this point, a Terraform state file has been created in the Azure Blob.
 
 Remove the local state files and the storage script.
 
-```
+```bash
 rm terraform.tfstate
 rm terraform.tfstate.backup
 rm storage.sh

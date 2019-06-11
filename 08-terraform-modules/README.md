@@ -10,14 +10,14 @@ In this module, you will see how to re-use the hello world configuration as a Te
 
 To use the hello world configuration as a module, navigate back to the root of `terraform` directory that you created earlier in this workshop. Create a new directory named `hello-world-from-module`.
 
-```
+```bash
 mkdir hello-world-from-module
 cd hello-world-from-module
 ```
 
 Create a file named `main.tf`.
 
-```
+```bash
 touch main.tf
 ```
 
@@ -25,7 +25,7 @@ Copy in the following configuration.
 
 Notice here that instead of defining things like the container image, memory, and cpu requests, you are only providing the location of the module, a resource group name, and a dns prefix. These values will be passed as input variables to the hello world configuration.
 
-```
+```terraform
 module "hello-world" {
     source = "../hello-world"
     resource_group = "hello-world-module"
@@ -35,19 +35,19 @@ module "hello-world" {
 
 Run the `terraform init` command to initialize the directory.
 
-```
+```bash
 terraform init
 ```
 
 Create a terraform plan.
 
-```
+```bash
 terraform plan --out plan.out
 ```
 
 Apply the plan.
 
-```
+```bash
 terraform apply plan.out
 ```
 

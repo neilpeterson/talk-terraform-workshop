@@ -8,31 +8,31 @@ Terraform functions allow us to transform, manipulate, and combine strings of te
 
 Terraform includes a built-in console for testing Terraform function syntax. Start the console with the `terraform console` command.
 
-```
+```bash
 terraform console
 ```
 
 Enter the following to run the `lower` function on the string `HELLO`).
 
-```
+```bash
 lower("HELLO")
 ```
 
 Enter the following to run the `substr` function on the long string.
 
-```
+```bash
 substr("ThisIsALongStfunctions-demongThatWouldFailAsAnAzureStorageAccountName", 0, 6)
 ```
 
 The following example combines both the `lower` and `substr` functions.
 
-```
+```bash
 lower(substr("ThisIsALongStfunctions-demongThatWouldFailAsAnAzureStorageAccountName", 0, 6))
 ```
 
 Exit the Terraform console with the `exit` command.
 
-```
+```bash
 exit
 ```
 
@@ -40,7 +40,7 @@ exit
 
 Open the `main.tf` file created in the last module and update the name of the Azure Container Instance to use the `lower` function.
 
-```
+```terraform
 resource "azurerm_resource_group" "hello-world" {
   name     = var.resource_group
   location = var.location
@@ -74,13 +74,13 @@ resource "azurerm_container_group" "hello-world" {
 
 Create the deployment plan.
 
-```
+```bash
 terraform plan --out plan.out
 ```
 
 If you have been following along, the container instance name should have changed from `HelloWorld` to `helloworld` which should be noted in the plan (output below).
 
-```
+```terraform
 # azurerm_container_group.hello-world must be replaced
 -/+ resource "azurerm_container_group" "hello-world" {
         dns_name_label      = "hello-world-71849"
