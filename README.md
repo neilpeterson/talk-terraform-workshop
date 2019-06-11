@@ -10,6 +10,11 @@ Welcome to this Terraform on Azure workshop. This version of the workshop is int
 
 We are in the process of creating a self-guided/self-paced version of this workshop and will add the location of that workshop once completed.
 
+## Contacts
+
+[@nepeters](https://twitter.com/nepeters)
+[@wiredcanuck](https://twitter.com/wiredcanuck)
+
 ## Azure Trial
 
 For those attending this workshop in person, a free Azure trail (no card needed) will be provided.
