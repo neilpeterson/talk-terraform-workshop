@@ -8,20 +8,20 @@ In this module, you will write your first Terraform configuration. A Terraform c
 
 Create a directory named `terraform` and then a directory under that named `hello-world`.
 
-```
+```bash
 mkdir -p terraform/hello-world
 cd terraform/hello-world
 ```
 
 Create a file named `main.tf`.
 
-```
+```bash
 touch main.tf
 ```
 
 Copy in the following Terraform configuration.
 
-```
+```terraform
 resource "azurerm_resource_group" "hello-world" {
   name     = "hello-world"
   location = "eastus"
@@ -34,19 +34,19 @@ Before creating the resource, the `hello-world` directory must be initialized. T
 
 Use `terraform init` to initialize the directory.
 
-```
+```bash
 terraform init
 ```
 
 Use the `terraform apply` command to run the configuration. Terraform will produce a plan that indicates all resources that will be created, modified, or destroyed. You can then accept the plan to created the resources.
 
-```
+```bash
 terraform apply
 ```
 
 To validate resource creation, use the Azure CLI `az group list` command.
 
-```
+```bash
 $ az group list -o table
 
 Name             Location    Status
@@ -56,7 +56,7 @@ hello-world      eastus      Succeeded
 
 Now that the Terraform configuration has been applied, the configuration can be destroyed using the `terraform destroy` command.
 
-```
+```bash
 terraform destroy
 ```
 

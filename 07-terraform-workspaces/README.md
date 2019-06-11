@@ -8,19 +8,19 @@ In many cases, a Terraform configuration will be applied to multiple environment
 
 List the Terraform workspaces with the `terraform workspace list` command. To start, you should have only the `default` workspace.
 
-```
+```bash
 terraform workspace list
 ```
 
 Create a new workspace with the `terraform workspace new` command.
 
-```
+```bash
 terraform workspace new test-environment
 ```
 
 Update the `hello-world` app configuration to insert the workspace name into the configuration. This can be done with the `${terraform.workspace}` syntax. In this example, the Azure **resource group name** is appended with the workspace name.
 
-```
+```terraform
 resource "azurerm_resource_group" "hello-world" {
   name     = "${var.resource_group}-${terraform.workspace}"
   location = var.location
@@ -54,14 +54,14 @@ resource "azurerm_container_group" "hello-world" {
 
 Create a new plan for the hello-world configuration.
 
-```
+```bash
 terraform plan --out plan.out
 ```
 
 Apply the plan.
 
 
-```
+```bash
 terraform apply plan.out
 ```
 
@@ -69,27 +69,27 @@ terraform apply plan.out
 
 Create a second workspace with the `terraform workspace new` command.
 
-```
+```bash
 terraform workspace new production-environment
 ```
 
 Create a new plan for the hello-world configuration.
 
 
-```
+```bash
 terraform plan --out plan.out
 ```
 
 Apply the plan.
 
 
-```
+```bash
 terraform apply plan.out
 ```
 
 List the Terraform workspaces with the `terraform workspace list` command. You should now see the two new workspaces.
 
-```
+```bash
 $ terraform workspace list
 
   default
@@ -103,7 +103,7 @@ Taking a look at the backend, you should see the state file for each workspace.
 
 Also notice that you now have an instance of the application for each workspace, each in its own Azure resource group.
 
-```
+```bash
 $ az group list -o table
 
 Name                                Location    Status
@@ -119,25 +119,25 @@ To remove a workspace, first, destroy the current configuration and delete the w
 
 Switch to the `test-environment` workspace.
 
-```
+```bash
 terraform workspace select test-environment
 ```
 
 Destroy the configuration.
 
-```
+```bash
 terraform destroy
 ```
 
 Switch to the `default` workspace.
 
-```
+```bash
 terraform workspace select default
 ```
 
 Delete the `test-environment` workspace.
 
-```
+```bash
 terraform workspace delete test-environment
 ```
 

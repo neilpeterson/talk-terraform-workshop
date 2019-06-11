@@ -48,7 +48,7 @@ In order for you to run Terratest integration tests, you will need to provide cr
 
 First, use the Azure CLI [az ad sp create-for-rbac](https://docs.microsoft.com/en-us/cli/azure/ad/sp?WT.mc_id=cloudnativeterraform-github-nepeters#az-ad-sp-create-for-rbac) command to create an Azure Service Principal.
 
-```
+```bash
 $ az ad sp create-for-rbac
 
 {
@@ -62,7 +62,7 @@ $ az ad sp create-for-rbac
 
 Use the [az account list](https://docs.microsoft.com/en-us/cli/azure/account?WT.mc_id=cloudnativeterraform-github-nepeters#az-account-list) command to find the Azure subscription id.
 
-```
+```bash
 $ az account list -o table
 
 Name                                         CloudName    SubscriptionId                        State    IsDefault

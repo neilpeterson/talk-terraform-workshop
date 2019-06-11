@@ -14,7 +14,7 @@ Open the previously created configuration found in the `main.tf` file and add a 
 
 Replace the contents of **main.tf** with the following configuration.
 
-```
+```terraform
 resource "azurerm_resource_group" "hello-world" {
   name     = "hello-world"
   location = "eastus"
@@ -56,25 +56,25 @@ Notice two things about the configuration.
 
 Run `terraform init` to ensure the directory is initialized.
 
-```
+```bash
 terraform init
 ```
 
 This time instead of running `terraform apply` to run the configuration, use `terraform plan --out plan.out` to visualize what will be created and produce a plan file.
 
-```
+```bash
 terraform plan --out plan.out
 ```
 
 Use `terraform apply plan.out` to apply the plan.
 
-```
+```bash
 terraform apply plan.out
 ```
 
 You can validate that the container has been created using the Azure CLI `az container list` command.
 
-```
+```bash
 $ az container list -o table
 
 Name         ResourceGroup    Status     Image                     IP:ports          Network    CPU/Memory       OsType    Location

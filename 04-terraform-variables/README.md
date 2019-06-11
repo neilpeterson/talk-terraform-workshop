@@ -10,13 +10,13 @@ In this module, you will update the hello world configuration to consume a set o
 
 Create a new file named `variables.tf`.
 
-```
+```bash
 touch variables.tf
 ```
 
 copy in the following configurations. These input variables are used to pass parameter values into the deployment configuration.
 
-```
+```terraform
 variable "resource_group" {
   description = "The name of the resource group in which to create the container instance and Cosmos DB instance."
   default     = "hello-world"
@@ -47,7 +47,7 @@ variable "container-name" {
 
 Update the configuration so that it consumes each variable.
 
-```
+```terraform
 resource "azurerm_resource_group" "hello-world" {
   name     = var.resource_group
   location = var.location
@@ -87,13 +87,13 @@ Output variables can be used to output calculated values to the terminal and als
 
 Create a file named `outputs.tf` for the output variables.
 
-```
+```bash
 touch outputs.tf
 ```
 
 Copy in the following configuration. This configuration will output the fully qualified domain name (FQDN) of the container instance.
 
-```
+```terraform
 output "fqdn" {
   value = azurerm_container_group.hello-world.fqdn
 }
@@ -101,13 +101,13 @@ output "fqdn" {
 
 # Run the updated configuration
 
-```
+```bash
 terraform plan --out plan.out
 ```
 
 Notice that the previous deployment was found, however, the Container Instance name has changed, which requires the resource to be re-deployed.
 
-```
+```terraform
 Terraform will perform the following actions:
 
   # azurerm_container_group.hello-world must be replaced
@@ -154,13 +154,13 @@ Plan: 1 to add, 0 to change, 1 to destroy.
 
 Use `terraform apply plan.out` to apply the plan.
 
-```
+```bash
 terraform apply plan.out
 ```
 
 Once the deployment has completed, the output variable is displayed.
 
-```
+```bash
 Outputs:
 
 fqdn = hello-world-58716.eastus.azurecontainer.io
