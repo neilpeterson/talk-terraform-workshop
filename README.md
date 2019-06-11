@@ -4,6 +4,8 @@ If you are just looking for a quick introduction to Terraform on Azure, see the 
 
 ## This workshop
 
+https://aka.ms/terraform-workshop
+
 Welcome to this Terraform on Azure workshop. This version of the workshop is intended to be led by an instructor. As such, you may find some of the content missing technical details. These details will be provided by the instructor.
 
 We are in the process of creating a self-guided/self-paced version of this workshop and will add the location of that workshop once completed.
